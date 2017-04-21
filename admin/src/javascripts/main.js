@@ -583,7 +583,7 @@ dlxs.App.prototype._initFootnotes = function() {
       // console.log("AHOY FOOTNOTE", footnote_indexes);
       for(var fid in footnote_indexes) {
         var content = self.footnotesData[index][fid];
-        var $li = $('<li class="footnote"><p><a href="fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
+        var $li = $('<li class="footnote"><p><a href="#fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
         $li.attr("id", "fn:" + fid);
       }
     }
@@ -592,7 +592,9 @@ dlxs.App.prototype._initFootnotes = function() {
   $.bigfoot({ 
     positionContent: false,
     activateCallback: function() { self.in_footnote = true; },
-    buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">{{FOOTNOTENUM}}</button></div>'
+    actionOriginalFN: 'hide',
+    // buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">{{FOOTNOTENUM}}</button></div>'
+    buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">' + self.dingbat + '</button></div>'
   } );
 }
 

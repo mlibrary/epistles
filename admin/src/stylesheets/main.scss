@@ -6,6 +6,7 @@
 @import "./modules/accordion";
 @import "./modules/leaflet.draw";
 @import "./modules/easy-button";
+@import "../../vendor/bigfoot/dist/bigfoot-number";
 
 .fa.fa-1_8x {
   font-size: 1.8em;
@@ -13,6 +14,17 @@
 
 .jBox-Confirm .jBox-content {
   padding: 10px 8px;
+}
+
+.panel.footnote-print-only {
+  display: flex !important;
+
+  ol.footnote-print-only {
+    display: block !important;
+    li {
+      display: list-item !important;
+    }
+  }
 }
 
 textarea {
