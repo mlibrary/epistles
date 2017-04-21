@@ -1,0 +1,135 @@
+.site-header {
+  background: $main-1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.site-brand,
+.site-brand:hover {
+  box-shadow: none !important;
+  background: none !important;
+
+  img {
+    width: 15rem;
+  }
+}
+
+.site-heading {
+  // font-size: 2rem;
+  // display: inline-block;
+  // margin-right: 1rem;
+}
+
+.site-subheading {
+  display: inline;
+  color: $grey-2;
+}
+
+.site-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.logo-item-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  align-items: center;
+  display: flex;
+
+  li {
+    display: flex;
+    margin: 0;
+    height: 2rem;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.logo-block-m {
+  padding-right: 1rem;
+  padding-left: 0;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.logo-library, .logo-app {
+  font-size: 1.5rem;
+  color: #fff;
+
+  a {
+    color: #fff;
+  }
+}
+
+.logo-library {
+  // border-right: 1px solid hsla(0,0%,100%,.5);
+  // border-left: 1px solid hsla(0,0%,100%,.5);
+  border-right: 1px solid rgba(255,255,255, 0.5);
+  border-left: 1px solid rgba(255,255,255, 0.51);
+  padding-right: 1rem;
+
+  a {
+    color: hsla(0,0%,100%,.5);
+  }
+}
+
+.site-header-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-left: 1rem;
+  }
+}
+
+.logo-link {
+  display: inline-block;
+  vertical-align: top;
+  height: 2rem;
+
+  img {
+    height: 100%;
+  }
+}
+
+@media (max-width: 32rem) {
+  .site-heading,
+  .site-subheading {
+    display: block;
+  }
+
+  .site-heading {
+    margin-bottom: 0;
+  }
+
+  .site-subheading {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.site-brand-mlibrary-logo,
+.site-brand-umich-block-m-logo {
+  display: inline-block;
+  height: 2.5rem;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.site-brand-umich-block-m-logo {
+  margin-right: 0.5rem;
+}

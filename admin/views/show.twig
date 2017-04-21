@@ -1,0 +1,66 @@
+{% extends "layout.twig" %}
+{% block title %}{{ identifier }}{% endblock %}
+
+{% block main %}
+<h1 class="offscreen">{{ identifier }}</h1>
+<div class="box box__1">
+    <div class="box box__1_2 panels--scan" id="viewer" data-identifier="{{ identifier }}">
+    </div>
+    <div class="box box__1_3 sidebar accordion" id="sidebar">
+        <input type="radio" name="group1" id="group-annotations" checked>
+        <label for="group-annotations" class="group group-annotations">
+            <div class="header">Translation</div>
+            <div class="panel">
+                <ul>
+                    <li><li><em>(No translation)</em></li>
+                    {# {% if annotations|length > 0 %}
+                        {% for tuple in annotations %}
+                            <li><span>{{ tuple.text }}</span></li>
+                        {% endfor %}
+                    {% else %}
+                        <li><em>(No annotations)</em></li>
+                    {% endif %} #}
+                </ul>
+            </div>
+        </label>
+        {% if original_translation|length > 0 %}
+            <input type="radio" name="group1" id="group-original" />
+            <label for="group-original" class="group">
+                <div class="header">Original</div>
+                <div class="panel">
+                    <ul>
+                        {% for line in original_translation %}
+                            <li><span>{{ line }}</span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </label>
+        {% endif %}
+        <input type="radio" name="group1" id="group-footnotes">
+        <label for="group-footnotes" class="group">
+            <div class="header">Footnotes</div>
+            <div class="panel">
+                <dl>
+                    {% for key in footnotes|keys %}
+                        <dt>f{{ key }}</dt>
+                        <dd>{{ footnotes[key] }}</dd>
+                    {% endfor %}
+                </dl>
+                <form id="data-add-footnote">
+                    <p>
+                        <textarea name="text"></textarea>
+                    </p>
+                    <p><button class="button button-light">Add Footnote</button></p>
+                </form>
+            </div>
+        </label>
+    </div>
+</div>
+<div 
+<div class="modal-form" id="modal-form" style="display: none">
+    <form>
+        <textarea name="text" class="form-control"></textarea>
+    </form>
+</div>
+<script type="x-data" id="annotations-data">{{ annotations|raw }}</script>
+{% endblock %}

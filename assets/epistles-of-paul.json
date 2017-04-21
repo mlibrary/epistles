@@ -1,0 +1,2123 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2",
+  "@type": "sc:Manifest",
+  "attribution": "University of Michigan Library Digital Collections",
+  "description": "The Advanced Papyrological Information System (APIS) is a collections-based repository hosting information about and images of papyrological materials (e.g., papyri, ostraca, wood tablets, etc.) located in collections around the world. It contains physical descriptions and bibliographic information about the papyri and other written materials, as well as digital images and English translations of many of these texts. When possible, links are also provided to the original language texts (e.g., through the Duke Data Bank of Documentary Papyri). The user can move back and forth among text, translation, bibliography, description, and image. With the specially-developed APIS Search System many different types of complex searches can be carried out. APIS includes both published and unpublished material.",
+  "label": "Advanced Papyrological Information System (APIS UM)",
+  "sc:metadata": {
+    "@id": "_:35337f1232b9b5c92996e059174ef735",
+    "@type": "sc:date"
+  },
+  "sequences": [
+    {
+      "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/sequence/0",
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/1",
+          "@type": "sc:Canvas",
+          "height": 5896,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3553:6238_30.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/1",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3553/6238_30.TIF",
+                "@type": "dctypes:Image",
+                "height": 5896,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3553:6238_30.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4919
+              }
+            }
+          ],
+          "label": "6238_30.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4919,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3553:6238_30.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/2",
+          "@type": "sc:Canvas",
+          "height": 5992,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3554:6238_31.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/2",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3554/6238_31.TIF",
+                "@type": "dctypes:Image",
+                "height": 5992,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3554:6238_31.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5030
+              }
+            }
+          ],
+          "label": "6238_31.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5030,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3554:6238_31.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/3",
+          "@type": "sc:Canvas",
+          "height": 5960,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3555:6238_32.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/3",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3555/6238_32.TIF",
+                "@type": "dctypes:Image",
+                "height": 5960,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3555:6238_32.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5016
+              }
+            }
+          ],
+          "label": "6238_32.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5016,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3555:6238_32.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/4",
+          "@type": "sc:Canvas",
+          "height": 5904,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3556:6238_33.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/4",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3556/6238_33.TIF",
+                "@type": "dctypes:Image",
+                "height": 5904,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3556:6238_33.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5047
+              }
+            }
+          ],
+          "label": "6238_33.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5047,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3556:6238_33.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#fbff8e0fb3657548dd794ac6bb487a37/canvas/34",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg34/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#fbff8e0fb3657548dd794ac6bb487a37/canvas/34",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/34.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/34.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#33f27cf9a910c61674574c355a319ba8/canvas/35",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg35/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#33f27cf9a910c61674574c355a319ba8/canvas/35",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/35.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/35.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/5",
+          "@type": "sc:Canvas",
+          "height": 5968,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3557:6238_36.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/5",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3557/6238_36.TIF",
+                "@type": "dctypes:Image",
+                "height": 5968,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3557:6238_36.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5040
+              }
+            }
+          ],
+          "label": "6238_36.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5040,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3557:6238_36.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/6",
+          "@type": "sc:Canvas",
+          "height": 5864,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3558:6238_37.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/6",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3558/6238_37.TIF",
+                "@type": "dctypes:Image",
+                "height": 5864,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3558:6238_37.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5048
+              }
+            }
+          ],
+          "label": "6238_37.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5048,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3558:6238_37.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/7",
+          "@type": "sc:Canvas",
+          "height": 5872,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3559:6238_38.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/7",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3559/6238_38.TIF",
+                "@type": "dctypes:Image",
+                "height": 5872,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3559:6238_38.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5125
+              }
+            }
+          ],
+          "label": "6238_38.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5125,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3559:6238_38.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/8",
+          "@type": "sc:Canvas",
+          "height": 5944,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3560:6238_39.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/8",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3560/6238_39.TIF",
+                "@type": "dctypes:Image",
+                "height": 5944,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3560:6238_39.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4907
+              }
+            }
+          ],
+          "label": "6238_39.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4907,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3560:6238_39.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/9",
+          "@type": "sc:Canvas",
+          "height": 5976,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3561:6238_42.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/9",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3561/6238_42.TIF",
+                "@type": "dctypes:Image",
+                "height": 5976,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3561:6238_42.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5222
+              }
+            }
+          ],
+          "label": "6238_42.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5222,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3561:6238_42.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/10",
+          "@type": "sc:Canvas",
+          "height": 5840,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3562:6238_44.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/10",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3562/6238_44.TIF",
+                "@type": "dctypes:Image",
+                "height": 5840,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3562:6238_44.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4872
+              }
+            }
+          ],
+          "label": "6238_44.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4872,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3562:6238_44.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/11",
+          "@type": "sc:Canvas",
+          "height": 5912,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3564:6238_43.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/11",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3564/6238_43.TIF",
+                "@type": "dctypes:Image",
+                "height": 5912,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3564:6238_43.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5110
+              }
+            }
+          ],
+          "label": "6238_43.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5110,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3564:6238_43.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/12",
+          "@type": "sc:Canvas",
+          "height": 5809,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3565:6238_45.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/12",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3565/6238_45.TIF",
+                "@type": "dctypes:Image",
+                "height": 5809,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3565:6238_45.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4598
+              }
+            }
+          ],
+          "label": "6238_45.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4598,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3565:6238_45.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/13",
+          "@type": "sc:Canvas",
+          "height": 5790,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3569:6238_40.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/13",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3569/6238_40.TIF",
+                "@type": "dctypes:Image",
+                "height": 5790,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3569:6238_40.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4869
+              }
+            }
+          ],
+          "label": "6238_40.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4869,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3569:6238_40.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/14",
+          "@type": "sc:Canvas",
+          "height": 5953,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3570:6238_41.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/14",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3570/6238_41.TIF",
+                "@type": "dctypes:Image",
+                "height": 5953,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3570:6238_41.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4961
+              }
+            }
+          ],
+          "label": "6238_41.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4961,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3570:6238_41.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/15",
+          "@type": "sc:Canvas",
+          "height": 5952,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3571:6238_46.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/15",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3571/6238_46.TIF",
+                "@type": "dctypes:Image",
+                "height": 5952,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3571:6238_46.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4976
+              }
+            }
+          ],
+          "label": "6238_46.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4976,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3571:6238_46.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/16",
+          "@type": "sc:Canvas",
+          "height": 5976,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3572:6238_47.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/16",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3572/6238_47.TIF",
+                "@type": "dctypes:Image",
+                "height": 5976,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3572:6238_47.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4901
+              }
+            }
+          ],
+          "label": "6238_47.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4901,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3572:6238_47.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/17",
+          "@type": "sc:Canvas",
+          "height": 5896,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3573:6238_48.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/17",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3573/6238_48.TIF",
+                "@type": "dctypes:Image",
+                "height": 5896,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3573:6238_48.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4843
+              }
+            }
+          ],
+          "label": "6238_48.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4843,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3573:6238_48.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/18",
+          "@type": "sc:Canvas",
+          "height": 5984,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3574:6238_49.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/18",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3574/6238_49.TIF",
+                "@type": "dctypes:Image",
+                "height": 5984,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3574:6238_49.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4981
+              }
+            }
+          ],
+          "label": "6238_49.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4981,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3574:6238_49.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/19",
+          "@type": "sc:Canvas",
+          "height": 5952,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3575:6238_50.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/19",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3575/6238_50.TIF",
+                "@type": "dctypes:Image",
+                "height": 5952,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3575:6238_50.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4952
+              }
+            }
+          ],
+          "label": "6238_50.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4952,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3575:6238_50.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/20",
+          "@type": "sc:Canvas",
+          "height": 5920,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3576:6238_51.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/20",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3576/6238_51.TIF",
+                "@type": "dctypes:Image",
+                "height": 5920,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3576:6238_51.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4928
+              }
+            }
+          ],
+          "label": "6238_51.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4928,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3576:6238_51.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/21",
+          "@type": "sc:Canvas",
+          "height": 5824,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3577:6238_52.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/21",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3577/6238_52.TIF",
+                "@type": "dctypes:Image",
+                "height": 5824,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3577:6238_52.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4867
+              }
+            }
+          ],
+          "label": "6238_52.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4867,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3577:6238_52.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/22",
+          "@type": "sc:Canvas",
+          "height": 5928,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3578:6238_53.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/22",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3578/6238_53.TIF",
+                "@type": "dctypes:Image",
+                "height": 5928,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3578:6238_53.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4870
+              }
+            }
+          ],
+          "label": "6238_53.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4870,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3578:6238_53.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/23",
+          "@type": "sc:Canvas",
+          "height": 5784,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3579:6238_54.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/23",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3579/6238_54.TIF",
+                "@type": "dctypes:Image",
+                "height": 5784,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3579:6238_54.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5128
+              }
+            }
+          ],
+          "label": "6238_54.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5128,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3579:6238_54.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/24",
+          "@type": "sc:Canvas",
+          "height": 5992,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3580:6238_55.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/24",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3580/6238_55.TIF",
+                "@type": "dctypes:Image",
+                "height": 5992,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3580:6238_55.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5142
+              }
+            }
+          ],
+          "label": "6238_55.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5142,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3580:6238_55.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#d467b1aea69ea2f07f10f4fc8de7311f/canvas/56",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg56/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#d467b1aea69ea2f07f10f4fc8de7311f/canvas/56",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/56.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/56.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#4e29ae69e815e8ba6ec423d4048cd0ce/canvas/57",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg57/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#4e29ae69e815e8ba6ec423d4048cd0ce/canvas/57",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/57.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/57.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/25",
+          "@type": "sc:Canvas",
+          "height": 5920,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3581:6238_58.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/25",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3581/6238_58.TIF",
+                "@type": "dctypes:Image",
+                "height": 5920,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3581:6238_58.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4835
+              }
+            }
+          ],
+          "label": "6238_58.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4835,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3581:6238_58.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/26",
+          "@type": "sc:Canvas",
+          "height": 5768,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3582:6238_59.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/26",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3582/6238_59.TIF",
+                "@type": "dctypes:Image",
+                "height": 5768,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3582:6238_59.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4638
+              }
+            }
+          ],
+          "label": "6238_59.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4638,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3582:6238_59.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#605edf008ff7ecb243dbb941bbb49b79/canvas/60",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg60/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#605edf008ff7ecb243dbb941bbb49b79/canvas/60",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/60.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/60.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#94c39d1b52c07551b289834fcb95d137/canvas/61",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg61/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#94c39d1b52c07551b289834fcb95d137/canvas/61",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/61.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/61.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/27",
+          "@type": "sc:Canvas",
+          "height": 5912,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3583:6238_78.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/27",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3583/6238_78.TIF",
+                "@type": "dctypes:Image",
+                "height": 5912,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3583:6238_78.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4582
+              }
+            }
+          ],
+          "label": "6238_78.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4582,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3583:6238_78.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/28",
+          "@type": "sc:Canvas",
+          "height": 5768,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3584:6238_79.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/28",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3584/6238_79.TIF",
+                "@type": "dctypes:Image",
+                "height": 5768,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3584:6238_79.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4470
+              }
+            }
+          ],
+          "label": "6238_79.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4470,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3584:6238_79.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/29",
+          "@type": "sc:Canvas",
+          "height": 5651,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3585:6238_136.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/29",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3585/6238_136.TIF",
+                "@type": "dctypes:Image",
+                "height": 5651,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3585:6238_136.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4988
+              }
+            }
+          ],
+          "label": "6238_136.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4988,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3585:6238_136.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/30",
+          "@type": "sc:Canvas",
+          "height": 5940,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3586:6238_137.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/30",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3586/6238_137.TIF",
+                "@type": "dctypes:Image",
+                "height": 5940,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3586:6238_137.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5303
+              }
+            }
+          ],
+          "label": "6238_137.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5303,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3586:6238_137.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/31",
+          "@type": "sc:Canvas",
+          "height": 5720,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3587:6238_138.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/31",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3587/6238_138.TIF",
+                "@type": "dctypes:Image",
+                "height": 5720,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3587:6238_138.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5028
+              }
+            }
+          ],
+          "label": "6238_138.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5028,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3587:6238_138.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/32",
+          "@type": "sc:Canvas",
+          "height": 5824,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3588:6238_139.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/32",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3588/6238_139.TIF",
+                "@type": "dctypes:Image",
+                "height": 5824,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3588:6238_139.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5003
+              }
+            }
+          ],
+          "label": "6238_139.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5003,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3588:6238_139.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/33",
+          "@type": "sc:Canvas",
+          "height": 5864,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3589:6238_140.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/33",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3589/6238_140.TIF",
+                "@type": "dctypes:Image",
+                "height": 5864,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3589:6238_140.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4703
+              }
+            }
+          ],
+          "label": "6238_140.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4703,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3589:6238_140.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/34",
+          "@type": "sc:Canvas",
+          "height": 5928,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3590:6238_141.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/34",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3590/6238_141.TIF",
+                "@type": "dctypes:Image",
+                "height": 5928,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3590:6238_141.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4712
+              }
+            }
+          ],
+          "label": "6238_141.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4712,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3590:6238_141.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/35",
+          "@type": "sc:Canvas",
+          "height": 5872,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3591:6238_142.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/35",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3591/6238_142.TIF",
+                "@type": "dctypes:Image",
+                "height": 5872,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3591:6238_142.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4734
+              }
+            }
+          ],
+          "label": "6238_142.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4734,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3591:6238_142.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/36",
+          "@type": "sc:Canvas",
+          "height": 5903,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3592:6238_143.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/36",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3592/6238_143.TIF",
+                "@type": "dctypes:Image",
+                "height": 5903,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3592:6238_143.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4733
+              }
+            }
+          ],
+          "label": "6238_143.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4733,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3592:6238_143.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/37",
+          "@type": "sc:Canvas",
+          "height": 5572,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3593:6238_144.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/37",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3593/6238_144.TIF",
+                "@type": "dctypes:Image",
+                "height": 5572,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3593:6238_144.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4794
+              }
+            }
+          ],
+          "label": "6238_144.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4794,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3593:6238_144.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/38",
+          "@type": "sc:Canvas",
+          "height": 5524,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3594:6238_145.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/38",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3594/6238_145.TIF",
+                "@type": "dctypes:Image",
+                "height": 5524,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3594:6238_145.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4770
+              }
+            }
+          ],
+          "label": "6238_145.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4770,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3594:6238_145.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/39",
+          "@type": "sc:Canvas",
+          "height": 6000,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3595:6238_146.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/39",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3595/6238_146.TIF",
+                "@type": "dctypes:Image",
+                "height": 6000,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3595:6238_146.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4826
+              }
+            }
+          ],
+          "label": "6238_146.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4826,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3595:6238_146.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/40",
+          "@type": "sc:Canvas",
+          "height": 7746,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3599:6238_147.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/40",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3599/6238_147.TIF",
+                "@type": "dctypes:Image",
+                "height": 7746,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3599:6238_147.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 6395
+              }
+            }
+          ],
+          "label": "6238_147.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 6395,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3599:6238_147.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/41",
+          "@type": "sc:Canvas",
+          "height": 5792,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3600:6238_148.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/41",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3600/6238_148.TIF",
+                "@type": "dctypes:Image",
+                "height": 5792,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3600:6238_148.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4908
+              }
+            }
+          ],
+          "label": "6238_148.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4908,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3600:6238_148.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/42",
+          "@type": "sc:Canvas",
+          "height": 5944,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3601:6238_149.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/42",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3601/6238_149.TIF",
+                "@type": "dctypes:Image",
+                "height": 5944,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3601:6238_149.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4916
+              }
+            }
+          ],
+          "label": "6238_149.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4916,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3601:6238_149.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/43",
+          "@type": "sc:Canvas",
+          "height": 5800,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3602:6238_150.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/43",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3602/6238_150.TIF",
+                "@type": "dctypes:Image",
+                "height": 5800,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3602:6238_150.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4924
+              }
+            }
+          ],
+          "label": "6238_150.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4924,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3602:6238_150.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/44",
+          "@type": "sc:Canvas",
+          "height": 5776,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3603:6238_151.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/44",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3603/6238_151.TIF",
+                "@type": "dctypes:Image",
+                "height": 5776,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3603:6238_151.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4908
+              }
+            }
+          ],
+          "label": "6238_151.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4908,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3603:6238_151.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/45",
+          "@type": "sc:Canvas",
+          "height": 5840,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3604:6238_152.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/45",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3604/6238_152.TIF",
+                "@type": "dctypes:Image",
+                "height": 5840,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3604:6238_152.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5072
+              }
+            }
+          ],
+          "label": "6238_152.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5072,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3604:6238_152.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/46",
+          "@type": "sc:Canvas",
+          "height": 5912,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3606:6238_153.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/46",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3606/6238_153.TIF",
+                "@type": "dctypes:Image",
+                "height": 5912,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3606:6238_153.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5032
+              }
+            }
+          ],
+          "label": "6238_153.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5032,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3606:6238_153.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/47",
+          "@type": "sc:Canvas",
+          "height": 5680,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3607:6238_154.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/47",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3607/6238_154.TIF",
+                "@type": "dctypes:Image",
+                "height": 5680,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3607:6238_154.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4901
+              }
+            }
+          ],
+          "label": "6238_154.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4901,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3607:6238_154.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/48",
+          "@type": "sc:Canvas",
+          "height": 5880,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3608:6238_155.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/48",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3608/6238_155.TIF",
+                "@type": "dctypes:Image",
+                "height": 5880,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3608:6238_155.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4795
+              }
+            }
+          ],
+          "label": "6238_155.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4795,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3608:6238_155.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/49",
+          "@type": "sc:Canvas",
+          "height": 5976,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3609:6238_156.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/49",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3609/6238_156.TIF",
+                "@type": "dctypes:Image",
+                "height": 5976,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3609:6238_156.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4912
+              }
+            }
+          ],
+          "label": "6238_156.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4912,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3609:6238_156.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/50",
+          "@type": "sc:Canvas",
+          "height": 5968,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3610:6238_157.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/50",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3610/6238_157.TIF",
+                "@type": "dctypes:Image",
+                "height": 5968,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3610:6238_157.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4952
+              }
+            }
+          ],
+          "label": "6238_157.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4952,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3610:6238_157.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/51",
+          "@type": "sc:Canvas",
+          "height": 5896,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3611:6238_158.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/51",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3611/6238_158.TIF",
+                "@type": "dctypes:Image",
+                "height": 5896,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3611:6238_158.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5035
+              }
+            }
+          ],
+          "label": "6238_158.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5035,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3611:6238_158.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/52",
+          "@type": "sc:Canvas",
+          "height": 5832,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3612:6238_159.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/52",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3612/6238_159.TIF",
+                "@type": "dctypes:Image",
+                "height": 5832,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3612:6238_159.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5059
+              }
+            }
+          ],
+          "label": "6238_159.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5059,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3612:6238_159.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/53",
+          "@type": "sc:Canvas",
+          "height": 5880,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3613:6238_160.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/53",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3613/6238_160.TIF",
+                "@type": "dctypes:Image",
+                "height": 5880,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3613:6238_160.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5020
+              }
+            }
+          ],
+          "label": "6238_160.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5020,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3613:6238_160.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/54",
+          "@type": "sc:Canvas",
+          "height": 5888,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3614:6238_161.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/54",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3614/6238_161.TIF",
+                "@type": "dctypes:Image",
+                "height": 5888,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3614:6238_161.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4932
+              }
+            }
+          ],
+          "label": "6238_161.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4932,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3614:6238_161.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/55",
+          "@type": "sc:Canvas",
+          "height": 5832,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3615:6238_162.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/55",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3615/6238_162.TIF",
+                "@type": "dctypes:Image",
+                "height": 5832,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3615:6238_162.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4936
+              }
+            }
+          ],
+          "label": "6238_162.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4936,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3615:6238_162.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/56",
+          "@type": "sc:Canvas",
+          "height": 5904,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3616:6238_163.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/56",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3616/6238_163.TIF",
+                "@type": "dctypes:Image",
+                "height": 5904,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3616:6238_163.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5052
+              }
+            }
+          ],
+          "label": "6238_163.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5052,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3616:6238_163.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/57",
+          "@type": "sc:Canvas",
+          "height": 5792,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3617:6238_164.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/57",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3617/6238_164.TIF",
+                "@type": "dctypes:Image",
+                "height": 5792,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3617:6238_164.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4928
+              }
+            }
+          ],
+          "label": "6238_164.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4928,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3617:6238_164.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/58",
+          "@type": "sc:Canvas",
+          "height": 5896,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3618:6238_165.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/58",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3618/6238_165.TIF",
+                "@type": "dctypes:Image",
+                "height": 5896,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3618:6238_165.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 4928
+              }
+            }
+          ],
+          "label": "6238_165.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 4928,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3618:6238_165.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/59",
+          "@type": "sc:Canvas",
+          "height": 5768,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3619:6238_166.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/59",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3619/6238_166.TIF",
+                "@type": "dctypes:Image",
+                "height": 5768,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3619:6238_166.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5084
+              }
+            }
+          ],
+          "label": "6238_166.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5084,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3619:6238_166.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/60",
+          "@type": "sc:Canvas",
+          "height": 5984,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:3620:6238_167.TIF/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://quod.lib.umich.edu/cgi/i/image/api/manifest/apis#cf915f4bdc5032e7022f20007691b4e2/canvas/60",
+              "resource": {
+                "@id": "https://quod.lib.umich.edu/a/apis/3620/6238_167.TIF",
+                "@type": "dctypes:Image",
+                "height": 5984,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://quod.lib.umich.edu/cgi/i/image/api/image/apis:3620:6238_167.TIF",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                },
+                "width": 5080
+              }
+            }
+          ],
+          "label": "6238_167.tif||||||P.Mich.inv. 6238|||P.Mich.inv. 6238",
+          "width": 5080,
+          "otherContent": [
+            {
+              "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul/data/apis:3620:6238_167.TIF.js",
+              "@type": "sc:AnnotationList"
+            }
+          ]
+        },
+        {
+          "@id": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#ae952bb2ebf616dfd77dd673ee56840e/canvas/98",
+          "@type": "sc:Canvas",
+          "height": 1352,
+          "images": [
+            {
+              "@id": "urn:dlxs:apis:pg98/annotation/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://preview.quod.lib.umich.edu/sandbox/EpistlesOfPaul#ae952bb2ebf616dfd77dd673ee56840e/canvas/98",
+              "resource": {
+                "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/98.jpg",
+                "@type": "dctypes:Image",
+                "height": 1352,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://preview.quod.lib.umich.edu/e/epistles/Pages-HiRes/98.jpg",
+                  "profile": "http://iiif.io/api/image/2/level0.json"
+                },
+                "width": 852
+              }
+            }
+          ],
+          "label": "(inserted image)",
+          "width": 852
+        }
+      ],
+      "label": "Sample set"
+    }
+  ]
+}

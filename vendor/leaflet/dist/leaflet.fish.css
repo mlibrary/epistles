@@ -1,0 +1,56 @@
+
+      .leaflet-control-zoom {
+        left: 0;
+      }
+
+      .leaflet-left .leaflet-control {
+        margin-left: 18px;
+      }
+
+      .leaflet-control-pan {
+        width: 45px;
+        height: 76px;
+        left: 0px;
+      }
+
+      .leaflet-control-pan > div {
+        border-radius: 5px;
+        padding: 0;
+        background: #fff;
+        border: 1px solid #ccc;
+      }
+
+      .leaflet-control-pan a {
+        width: 30px;
+        height: 30px;
+        line-height: 30px
+        border-radius: 4px;
+      }
+
+      .leaflet-control-pan-up-wrap {
+        position: absolute;
+        left: 1px;
+      }
+
+      .leaflet-control-pan-left-wrap {
+        position: absolute;
+        top: 34px;
+        left: -14px;
+      }
+
+      .leaflet-control-pan-right-wrap {
+        position: absolute;
+        top: 34px;
+        left: 20px;
+      }
+
+      .leaflet-control-pan-down-wrap {
+        position: absolute;
+        top: 68px;
+        left: 1px;
+      }
+
+      .leaflet-container {
+        /*background: #333;*/
+        background-color: #fdfffb; /* close to the background? */
+      }
