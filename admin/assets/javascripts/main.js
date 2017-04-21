@@ -16692,6 +16692,7 @@ dlxs.App = function(options) {
   this.identifiers = [];
   this.identifier = null;
   this.info = {};
+  this.dirty = [];
 
   $.extend(this, options);
   console.log("AHOY", this);
@@ -16705,8 +16706,12 @@ dlxs.App.prototype.loadScan = function(identifier) {
   // this.updateDocumentTitle('viewer', identifier);
 };
 
-dlxs.App.prototype.initializeViewer = function(identifier) {
+dlxs.App.prototype.initializeViewer = function(options) {
   var self = this;
+
+  self.identifier = options.identifier;
+  self.published_at = options.published_at;
+  self.updated_at = options.updated_at;
 
   self.viewer = L.map(self.$scan.get(0), {
     center: [0,0],
@@ -16722,12 +16727,12 @@ dlxs.App.prototype.initializeViewer = function(identifier) {
   self.drawnItems = new L.FeatureGroup();
   self.viewer.addLayer(self.drawnItems);
 
-  self.layer = L.tileLayer.iiif('https://quod.lib.umich.edu/cgi/i/image/api/image/' + identifier + '/info.json');
+  self.layer = L.tileLayer.iiif('https://quod.lib.umich.edu/cgi/i/image/api/image/' + self.identifier + '/info.json');
   self.layer.on('load', function(e) { 
     e.target.off('load'); 
     self.width = self.layer.x;
     self.height = self.layer.y;
-    self.addHighlightOverlay(); 
+    self.initializeHighlightOverlay(options.annoData); 
   });
   self.layer.addTo(self.viewer);
 
@@ -16736,17 +16741,17 @@ dlxs.App.prototype.initializeViewer = function(identifier) {
   }).addTo(self.viewer);
 
   self._addDrawControl();
-  // self._addSaveControl();
+  self._addSaveControl();
 
   self._initEvents();
+  self._toggleObsolete();
 };
 
-dlxs.App.prototype.addHighlightOverlay = function() {
+dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
   var self = this;
 
   var viewer = self.viewer;
   var drawnItems = self.drawnItems;
-  var annoData = self.annoData;
 
   var defaultRectOptions = function() {
     return { clickable: true, color: randomColor({luminosity: 'bright',format:'hex'}),opacity: 0.75,weight:4,fillColor: '#eeeeee'};
@@ -16754,7 +16759,7 @@ dlxs.App.prototype.addHighlightOverlay = function() {
 
   var maxZoom = self.layer.maxZoom;
 
-  self.contentMap = {};
+  self.annoData = {};
 
   for(index in annoData) {
 
@@ -16804,7 +16809,7 @@ dlxs.App.prototype.addHighlightOverlay = function() {
     $(m._path).data("content", plain_content);
     $(m._path).data('index', index_);
     $(m._path).addClass("highlight");
-    self.contentMap[index_] = content;
+    self.annoData[index_] = content;
 
   }
 
@@ -16812,24 +16817,31 @@ dlxs.App.prototype.addHighlightOverlay = function() {
 
 };
 
+dlxs.App.prototype.getSortedDrawnLayers = function() {
+  var self = this;
+
+  // sort the drawnItems by position; the "top" of the map is 0
+  // need to do a descending sort to be correct
+  var layers = self.drawnItems.getLayers();
+  layers.sort(function(a, b) {
+    var a_top = a.getBounds().getNorth();
+    var b_top = b.getBounds().getNorth();
+    return b_top - a_top;
+  })
+  return layers;
+};
+
 dlxs.App.prototype.drawAnnotations = function() {
   var self = this;
   self.$annotations.empty();
 
-  // in the editor, draw annotations by way of the PATH elements
-  var paths = $("path.highlight").toArray();
-  paths.sort(function(a, b) {
-    var a_y = parseInt((a.getAttribute('d').match(/M(\d+) (\d+)/))[2], 10);
-    var b_y = parseInt((b.getAttribute('d').match(/M(\d+) (\d+)/))[2], 10);
-    return a_y - b_y;
-  });
-
-  if ( paths.length > 0 ) {
-    // $.each(self.contentMap, function(m_id, content) {
-    for(var i in paths) {
-      var path = paths[i];
+  var layers = self.getSortedDrawnLayers();
+  if ( layers.length > 0 ) {
+    for(var i in layers) {
+      var layer = layers[i];
+      var path = layer._path;
       var index = $(path).data('index');
-      var content = self.contentMap[index];
+      var content = self.annoData[index];
       var $span = $("<li><span>" + content + "</span></li>").appendTo(self.$annotations);
       // $span.appendTo($lines);
       $span.attr("id", "text" + index);
@@ -16906,7 +16918,7 @@ dlxs.App.prototype._addDrawControl = function() {
     })
     self.editRegion(new_layer, getSelectedText());
 
-  }).addTo(viewer);
+  }, 'Repeat', 'action-draw-repeat').addTo(viewer);
 
 };
 
@@ -16916,7 +16928,7 @@ dlxs.App.prototype.editAnnotation = function(index, text) {
   if ( window.deleting === true ) { return; }
   window.dragging = true;
 
-  text = text || self.contentMap[index];
+  text = text || self.annoData[index];
   var $path = $("#region" + index);
   self.$modalForm.find("textarea").val(text);
   self.$modalForm.data('index', index);
@@ -16948,8 +16960,9 @@ dlxs.App.prototype.editAnnotation = function(index, text) {
         var index = self.$modalForm.data('index');
         var update = self.$modalForm.find("textarea").val();
         update = update.replace(/\s+/g, ' ').replace(/ +/g, ' ');
-        self.contentMap[index] = update;
+        self.annoData[index] = update;
         self.drawAnnotations();
+        self._toggleDirty('annotations');
       },
       onOpen: function() {
         console.log("FOCUSED");
@@ -17010,7 +17023,7 @@ dlxs.App.prototype.editRegion = function(layer, text) {
         var update = self.$modalForm.find("textarea").val();
         update = update.replace(/\s+/g, ' ').replace(/ +/g, ' ');
         $(path).data('content', update);
-        self.contentMap[$(path).data('index')] = update;
+        self.annoData[$(path).data('index')] = update;
         self.drawAnnotations();
       }
     };
@@ -17035,9 +17048,10 @@ dlxs.App.prototype._addSaveControl = function() {
   var viewer = self.viewer;
   var drawnItems = self.drawnItems;
 
-  L.easyButton('<i class="fa fa-floppy-o fa-1_8x"></i>', function() {
-    data.regions = [];
-    var layers = drawnItems.getLayers();
+  var fn = {};
+  fn['annotations'] = function(data) {
+    data.annotations = [];
+    var layers = self.getSortedDrawnLayers();
     for(idx in layers) {
       var layer = layers[idx];
       var tuple = [];
@@ -17060,19 +17074,62 @@ dlxs.App.prototype._addSaveControl = function() {
         })
       }
 
-      tuple.push($(layer._path).data('content'));
-      data.regions.push(tuple);
+      var index = $(layer._path).data('index');
+      tuple.push(self.annoData[index]);
+      data.annotations.push(tuple);
     }
-    // $("#buffer").text(JSON.stringify(data.regions, null, 2));
+  };
+
+  fn['footnotes'] = function(data) {}
+
+  L.easyButton('<i class="fa fa-floppy-o fa-1_8x "></i>', function() {
+    var data = {};
+    if ( self.dirty.length == 0 ) { return ; }
+
+    data.action = 'update';
+
+    for(var i in self.dirty) {
+      var target = self.dirty[i];
+      fn[target](data);
+    }
+
     $.ajax({
       type: 'POST',
-      url: location.href, 
+      url: location.href,
       data: JSON.stringify(data), 
+      success: function(response) { 
+        console.log(response); 
+        self._toggleDirty(false); 
+        self._toggleObsolete();
+        self.updated_at = response.updated_at;
+      }, 
+      contentType: 'application/json',
+      dataType: 'json'
+    });
+  }, 'Save Annotations', 'action-save-annotation').addTo(viewer);
+
+  L.easyButton('<i class="fa fa-rocket fa-1_8x"></i>', function() {
+    $.ajax({
+      type: 'POST',
+      url: location.href,
+      data: JSON.stringify({ action: 'publish' }),
       success: function(response) { console.log(response) }, 
       contentType: 'application/json',
       dataType: 'json'
     });
-  }).addTo(viewer);
+
+  }, 'Publish Annotation', 'action-publish-annotation').addTo(viewer);
+
+};
+
+dlxs.App.prototype._toggleDirty = function(state) {
+  if ( state && this.dirty.indexOf(state) < 0 ) { this.dirty.push(state); }
+  $("#action-save-annotation").toggleClass("dirty", state);
+};
+
+dlxs.App.prototype._toggleObsolete = function() {
+  console.log("AHOY OBSOLETE", ( this.published_at == null || this.updated_at > this.published_at ));
+  $("#action-publish-annotation").toggleClass("ready", ( this.published_at == null || this.updated_at > this.published_at ));
 };
 
 dlxs.App.prototype._initEvents = function() {
@@ -17142,8 +17199,9 @@ dlxs.App.prototype._initEvents = function() {
       var layer = layers[i];
       var path = layer._path;
       var index = $(path).data('index');
-      delete self.contentMap[index];
+      delete self.annoData[index];
     }
+    self._toggleDirty(true);
     self.drawAnnotations();
   })
 
@@ -17218,16 +17276,13 @@ dlxs.App.prototype.getSelectedText = function() {
 $().ready(function() {
   console.log("READY");
 
-  var $btn1 = $("#btn-1");
-  var $btn2 = $("#btn-2");
-
   var annoData = JSON.parse($("#annotations-data").text());
+  var footnotesData = JSON.parse($("#footnotes-data").text());
 
   var app = new dlxs.App({
     $scan: $(".panels--scan"),
     $annotations: $(".group-annotations ul"),
     $modalForm: $("#modal-form"),
-    annoData: annoData,
     // $metadata: $(".panels--metadata"),
     // $text: $(".panels--text .panels--inner"),
     // $stickable: $("#stickable"),
@@ -17236,36 +17291,13 @@ $().ready(function() {
     EOT: true
   })
 
-  app.initializeViewer($(".panels--scan").data('identifier'));
+  app.initializeViewer({
+    identifier: $(".panels--scan").data('identifier'),
+    published_at: $(".panels--scan").data('published_at') || null,
+    updated_at: $(".panels--scan").data('updated_at'),
+    annoData: annoData,
+    footnotesData: footnotesData
+  });
 
   window.app = app;
-
-
-  var $modal_form = $("#");
-  
-  var modal;
-  $(".md-trigger").on('click', function() {
-    var $target = $(this);
-    $modal_form.find("textarea").val($target.data('text'));
-    var options = {
-      minWidth: 600,
-      maxWidth: 640,
-      repositionOnOpen: true,
-      animation: 'slide',
-      draggable: 'title',
-      audio: '/e/epistles/vendor/jBox/audio/beep1',
-      overlay: false,
-      content: $modal_form,
-      title: 'Translation?',
-      confirm: function() {
-        console.log("AHOY SUBMITTING UPDATES");
-        $target.data('text', $modal_form.find('textarea').val());
-      }
-    };
-    if ( $target.data('target') ) {
-      options.target = $target;
-    }
-    dlxs.modal = new jBox('Confirm', options);
-    dlxs.modal.open();
-  })
 })

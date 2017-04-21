@@ -462,274 +462,6 @@ body[class*=" jBox-blockScroll-"] {
   animation: jBox-slideLeft .4s;
 }
 
-
-/* jBox theme: NoticeFancy */
-
-.jBox-NoticeFancy .jBox-container {
-  border-radius: 5px;
-}
-
-.jBox-NoticeFancy .jBox-content,
-.jBox-NoticeFancy .jBox-title {
-  padding-left: 25px;
-}
-
-.jBox-NoticeFancy.jBox-Notice-color .jBox-container {
-  color: #fff;
-  background: #222;
-  text-shadow: 0 -1px 0 #000;
-}
-
-/* Colored borders */
-
-.jBox-NoticeFancy.jBox-Notice-color .jBox-container:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 8px;
-  border-radius: 4px 0 0 4px;
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent);
-  background-size: 14px 14px;
-}
-
-.jBox-NoticeFancy.jBox-Notice-black .jBox-container:after,
-.jBox-NoticeFancy.jBox-Notice-gray .jBox-container:after {
-  background-color: #888;
-}
-
-.jBox-NoticeFancy.jBox-Notice-red .jBox-container:after {
-  background-color: #e00;
-}
-
-.jBox-NoticeFancy.jBox-Notice-green .jBox-container:after {
-  background-color: #6c0;
-}
-
-.jBox-NoticeFancy.jBox-Notice-blue .jBox-container:after {
-  background-color: #07d;
-}
-
-.jBox-NoticeFancy.jBox-Notice-yellow .jBox-container:after {
-  background-color: #fb0;
-}
-
-/* jBox theme: TooltipBorder */
-
-.jBox-TooltipBorder .jBox-container {
-  border-radius: 5px;
-  border: 2px solid #49d;
-}
-
-/* Pointer */
-
-.jBox-TooltipBorder .jBox-pointer:after {
-  border: 2px solid #49d;
-}
-
-.jBox-TooltipBorder .jBox-pointer-top,
-.jBox-TooltipBorder .jBox-pointer-bottom {
-  width: 34px;
-  height: 13px;
-}
-
-.jBox-TooltipBorder .jBox-pointer-left,
-.jBox-TooltipBorder .jBox-pointer-right {
-  width: 13px;
-  height: 34px;
-}
-
-/* Close button */
-
-.jBox-TooltipBorder.jBox-closeButton-box:before {
-  width: 28px;
-  height: 28px;
-  background: #49d;
-}
-
-
-/* jBox theme: TooltipBorderThick */
-
-.jBox-TooltipBorderThick .jBox-container {
-  box-shadow: none;
-  border-radius: 8px;
-  border: 4px solid #ccc;
-}
-
-/* Pointer */
-
-.jBox-TooltipBorderThick .jBox-pointer:after {
-  box-shadow: none;
-  border: 4px solid #ccc;
-}
-
-.jBox-TooltipBorderThick .jBox-pointer-top,
-.jBox-TooltipBorderThick .jBox-pointer-bottom {
-  width: 38px;
-  height: 13px;
-}
-
-.jBox-TooltipBorderThick .jBox-pointer-left,
-.jBox-TooltipBorderThick .jBox-pointer-right {
-  width: 13px;
-  height: 38px;
-}
-
-/* Close button */
-
-.jBox-TooltipBorderThick.jBox-closeButton-box:before {
-  width: 32px;
-  height: 32px;
-  background: #ccc;
-}
-
-
-/* jBox theme: TooltipDark */
-
-.jBox-TooltipDark .jBox-container {
-  border-radius: 3px;
-  background: #000;
-  color: #fff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, .4);
-}
-
-/* Pointer */
-
-.jBox-TooltipDark .jBox-pointer:after {
-  background: #000;
-}
-
-/* Close button */
-
-.jBox-TooltipDark .jBox-closeButton {
-  background: #000;
-}
-
-.jBox-TooltipDark.jBox-closeButton-box:before {
-  box-shadow: 0 0 6px rgba(0, 0, 0, .4);
-}
-
-.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton path {
-  fill: #ddd;
-}
-
-.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton:hover path {
-  fill: #fff;
-}
-
-.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton:active path {
-  fill: #bbb;
-}
-
-
-/* jBox theme: TooltipSmall */
-
-.jBox-TooltipSmall {
-  pointer-events: none;
-}
-
-.jBox-TooltipSmall .jBox-content {
-  padding: 0 10px;
-  line-height: 28px;
-}
-
-.jBox-TooltipSmall .jBox-container {
-  border-radius: 2px;
-}
-
-.jBox-TooltipSmall .jBox-pointer-top,
-.jBox-TooltipSmall .jBox-pointer-bottom {
-  width: 22px;
-  height: 8px;
-}
-
-.jBox-TooltipSmall .jBox-pointer-right,
-.jBox-TooltipSmall .jBox-pointer-left {
-  width: 8px;
-  height: 22px;
-}
-
-.jBox-TooltipSmall .jBox-pointer:after {
-  width: 20px;
-  height: 20px;
-}
-
-.jBox-TooltipSmall .jBox-pointer-top:after {
-  left: 1px;
-  top: 6px;
-}
-
-.jBox-TooltipSmall .jBox-pointer-bottom:after {
-  left: 1px;
-  bottom: 6px;
-}
-
-.jBox-TooltipSmall .jBox-pointer-right:after {
-  top: 1px;
-  right: 6px;
-}
-
-.jBox-TooltipSmall .jBox-pointer-left:after {
-  top: 1px;
-  left: 6px;
-}
-
-/* jBox theme: TooltipSmall */
-
-.jBox-TooltipSmallGray {
-  pointer-events: none;
-}
-
-.jBox-TooltipSmallGray .jBox-content {
-  padding: 0 10px;
-}
-
-.jBox-TooltipSmallGray .jBox-container {
-  font-size: 13px;
-  line-height: 24px;
-  border-radius: 12px;
-  background-image: linear-gradient(to bottom, #fafafa, #f2f2f2);
-}
-
-.jBox-TooltipSmallGray .jBox-pointer-top,
-.jBox-TooltipSmallGray .jBox-pointer-bottom {
-  width: 22px;
-  height: 8px;
-}
-
-.jBox-TooltipSmallGray .jBox-pointer-right,
-.jBox-TooltipSmallGray .jBox-pointer-left {
-  width: 8px;
-  height: 22px;
-}
-
-.jBox-TooltipSmallGray .jBox-pointer:after {
-  width: 20px;
-  height: 20px;
-}
-
-.jBox-TooltipSmallGray .jBox-pointer-top:after {
-  background: #fafafa;
-  left: 1px;
-  top: 6px;
-}
-
-.jBox-TooltipSmallGray .jBox-pointer-bottom:after {
-  background: #f2f2f2;
-  left: 1px;
-  bottom: 6px;
-}
-
-.jBox-TooltipSmallGray .jBox-pointer-right:after {
-  top: 1px;
-  right: 6px;
-}
-
-.jBox-TooltipSmallGray .jBox-pointer-left:after {
-  top: 1px;
-  left: 6px;
-}
 .bigfoot-footnote__button {
   position: relative;
   z-index: 5;
@@ -1007,6 +739,63 @@ body[class*=" jBox-blockScroll-"] {
 
 .bigfoot-footnote__button__circle {
   display: none;
+}
+
+.leaflet-bar button,
+.leaflet-bar button:hover {
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.leaflet-bar button {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+}
+
+.leaflet-bar button:hover {
+  background-color: #f4f4f4;
+}
+
+.leaflet-bar button:first-of-type {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.leaflet-bar button:last-of-type {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom: none;
+}
+
+.leaflet-bar.disabled,
+.leaflet-bar button.disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: .4;
+}
+
+.easy-button-button .button-state{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+.leaflet-touch .leaflet-bar button {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
 }
 
 /* required styles */
@@ -1690,63 +1479,274 @@ body[class*=" jBox-blockScroll-"] {
         /*background: #333;*/
         background-color: #fdfffb; /* close to the background? */
       }
-.leaflet-bar button,
-.leaflet-bar button:hover {
-  background-color: #fff;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  color: black;
+
+/* jBox theme: NoticeFancy */
+
+.jBox-NoticeFancy .jBox-container {
+  border-radius: 5px;
 }
 
-.leaflet-bar button {
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
+.jBox-NoticeFancy .jBox-content,
+.jBox-NoticeFancy .jBox-title {
+  padding-left: 25px;
 }
 
-.leaflet-bar button:hover {
-  background-color: #f4f4f4;
+.jBox-NoticeFancy.jBox-Notice-color .jBox-container {
+  color: #fff;
+  background: #222;
+  text-shadow: 0 -1px 0 #000;
 }
 
-.leaflet-bar button:first-of-type {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+/* Colored borders */
+
+.jBox-NoticeFancy.jBox-Notice-color .jBox-container:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 8px;
+  border-radius: 4px 0 0 4px;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent);
+  background-size: 14px 14px;
 }
 
-.leaflet-bar button:last-of-type {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom: none;
+.jBox-NoticeFancy.jBox-Notice-black .jBox-container:after,
+.jBox-NoticeFancy.jBox-Notice-gray .jBox-container:after {
+  background-color: #888;
 }
 
-.leaflet-bar.disabled,
-.leaflet-bar button.disabled {
-  cursor: default;
+.jBox-NoticeFancy.jBox-Notice-red .jBox-container:after {
+  background-color: #e00;
+}
+
+.jBox-NoticeFancy.jBox-Notice-green .jBox-container:after {
+  background-color: #6c0;
+}
+
+.jBox-NoticeFancy.jBox-Notice-blue .jBox-container:after {
+  background-color: #07d;
+}
+
+.jBox-NoticeFancy.jBox-Notice-yellow .jBox-container:after {
+  background-color: #fb0;
+}
+
+/* jBox theme: TooltipBorder */
+
+.jBox-TooltipBorder .jBox-container {
+  border-radius: 5px;
+  border: 2px solid #49d;
+}
+
+/* Pointer */
+
+.jBox-TooltipBorder .jBox-pointer:after {
+  border: 2px solid #49d;
+}
+
+.jBox-TooltipBorder .jBox-pointer-top,
+.jBox-TooltipBorder .jBox-pointer-bottom {
+  width: 34px;
+  height: 13px;
+}
+
+.jBox-TooltipBorder .jBox-pointer-left,
+.jBox-TooltipBorder .jBox-pointer-right {
+  width: 13px;
+  height: 34px;
+}
+
+/* Close button */
+
+.jBox-TooltipBorder.jBox-closeButton-box:before {
+  width: 28px;
+  height: 28px;
+  background: #49d;
+}
+
+
+/* jBox theme: TooltipBorderThick */
+
+.jBox-TooltipBorderThick .jBox-container {
+  box-shadow: none;
+  border-radius: 8px;
+  border: 4px solid #ccc;
+}
+
+/* Pointer */
+
+.jBox-TooltipBorderThick .jBox-pointer:after {
+  box-shadow: none;
+  border: 4px solid #ccc;
+}
+
+.jBox-TooltipBorderThick .jBox-pointer-top,
+.jBox-TooltipBorderThick .jBox-pointer-bottom {
+  width: 38px;
+  height: 13px;
+}
+
+.jBox-TooltipBorderThick .jBox-pointer-left,
+.jBox-TooltipBorderThick .jBox-pointer-right {
+  width: 13px;
+  height: 38px;
+}
+
+/* Close button */
+
+.jBox-TooltipBorderThick.jBox-closeButton-box:before {
+  width: 32px;
+  height: 32px;
+  background: #ccc;
+}
+
+
+/* jBox theme: TooltipDark */
+
+.jBox-TooltipDark .jBox-container {
+  border-radius: 3px;
+  background: #000;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+}
+
+/* Pointer */
+
+.jBox-TooltipDark .jBox-pointer:after {
+  background: #000;
+}
+
+/* Close button */
+
+.jBox-TooltipDark .jBox-closeButton {
+  background: #000;
+}
+
+.jBox-TooltipDark.jBox-closeButton-box:before {
+  box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+}
+
+.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton path {
+  fill: #ddd;
+}
+
+.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton:hover path {
+  fill: #fff;
+}
+
+.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton:active path {
+  fill: #bbb;
+}
+
+
+/* jBox theme: TooltipSmall */
+
+.jBox-TooltipSmall {
   pointer-events: none;
-  opacity: .4;
 }
 
-.easy-button-button .button-state{
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
+.jBox-TooltipSmall .jBox-content {
+  padding: 0 10px;
+  line-height: 28px;
 }
 
-
-.leaflet-touch .leaflet-bar button {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+.jBox-TooltipSmall .jBox-container {
+  border-radius: 2px;
 }
 
+.jBox-TooltipSmall .jBox-pointer-top,
+.jBox-TooltipSmall .jBox-pointer-bottom {
+  width: 22px;
+  height: 8px;
+}
+
+.jBox-TooltipSmall .jBox-pointer-right,
+.jBox-TooltipSmall .jBox-pointer-left {
+  width: 8px;
+  height: 22px;
+}
+
+.jBox-TooltipSmall .jBox-pointer:after {
+  width: 20px;
+  height: 20px;
+}
+
+.jBox-TooltipSmall .jBox-pointer-top:after {
+  left: 1px;
+  top: 6px;
+}
+
+.jBox-TooltipSmall .jBox-pointer-bottom:after {
+  left: 1px;
+  bottom: 6px;
+}
+
+.jBox-TooltipSmall .jBox-pointer-right:after {
+  top: 1px;
+  right: 6px;
+}
+
+.jBox-TooltipSmall .jBox-pointer-left:after {
+  top: 1px;
+  left: 6px;
+}
+
+/* jBox theme: TooltipSmall */
+
+.jBox-TooltipSmallGray {
+  pointer-events: none;
+}
+
+.jBox-TooltipSmallGray .jBox-content {
+  padding: 0 10px;
+}
+
+.jBox-TooltipSmallGray .jBox-container {
+  font-size: 13px;
+  line-height: 24px;
+  border-radius: 12px;
+  background-image: linear-gradient(to bottom, #fafafa, #f2f2f2);
+}
+
+.jBox-TooltipSmallGray .jBox-pointer-top,
+.jBox-TooltipSmallGray .jBox-pointer-bottom {
+  width: 22px;
+  height: 8px;
+}
+
+.jBox-TooltipSmallGray .jBox-pointer-right,
+.jBox-TooltipSmallGray .jBox-pointer-left {
+  width: 8px;
+  height: 22px;
+}
+
+.jBox-TooltipSmallGray .jBox-pointer:after {
+  width: 20px;
+  height: 20px;
+}
+
+.jBox-TooltipSmallGray .jBox-pointer-top:after {
+  background: #fafafa;
+  left: 1px;
+  top: 6px;
+}
+
+.jBox-TooltipSmallGray .jBox-pointer-bottom:after {
+  background: #f2f2f2;
+  left: 1px;
+  bottom: 6px;
+}
+
+.jBox-TooltipSmallGray .jBox-pointer-right:after {
+  top: 1px;
+  right: 6px;
+}
+
+.jBox-TooltipSmallGray .jBox-pointer-left:after {
+  top: 1px;
+  left: 6px;
+}
 
 .jBox-Confirm .jBox-content {
   text-align: center;
@@ -1804,86 +1804,6 @@ body[class*=" jBox-blockScroll-"] {
     padding: 32px 20px;
   }
 
-}
-
-.jBox-Notice {
-  transition: margin .2s;
-}
-
-.jBox-Notice .jBox-container {
-  border-radius: 3px;
-  box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, .25), inset -1px -1px 0 0 rgba(0, 0, 0, .1);
-}
-
-.jBox-Notice .jBox-content {
-  border-radius: 3px;
-  padding: 12px 20px;
-}
-
-.jBox-Notice .jBox-title {
-  padding: 12px 20px 0;
-  font-weight: bold;
-}
-
-.jBox-hasTitle.jBox-Notice .jBox-content {
-  padding-top: 5px;
-}
-
-.jBox-Notice-black .jBox-container {
-  color: #fff;
-  background: #000;
-}
-
-.jBox-Notice-gray .jBox-container {
-  color: #333;
-  background: #f6f6f6;
-}
-
-.jBox-Notice-red .jBox-container {
-  color: #fff;
-  background: #d00;
-}
-
-.jBox-Notice-green .jBox-container {
-  color: #fff;
-  background: #5d0;
-}
-
-.jBox-Notice-blue .jBox-container {
-  color: #fff;
-  background: #07d;
-}
-
-.jBox-Notice-yellow .jBox-container {
-  color: #000;
-  background: #fd0;
-}
-
-@media (max-width: 768px) {
-  
-  .jBox-Notice .jBox-content {
-    padding: 10px 15px;
-  }
-  
-  .jBox-Notice .jBox-title {
-    padding: 10px 15px 0;
-  }
-  
-}
-
-@media (max-width: 500px) {
-  
-  .jBox-Notice .jBox-content {
-    padding: 8px 10px;
-  }
-  
-  .jBox-Notice .jBox-title {
-    padding: 8px 10px 0;
-  }
-  
-  .jBox-hasTitle.jBox-Notice .jBox-content {
-    padding-top: 0;
-  }
 }
 
 .jBox-Image .jBox-container {
@@ -2034,6 +1954,86 @@ body[class*=" jBox-blockScroll-"] {
   border-radius: 50%;
 }
 
+
+.jBox-Notice {
+  transition: margin .2s;
+}
+
+.jBox-Notice .jBox-container {
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, .25), inset -1px -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.jBox-Notice .jBox-content {
+  border-radius: 3px;
+  padding: 12px 20px;
+}
+
+.jBox-Notice .jBox-title {
+  padding: 12px 20px 0;
+  font-weight: bold;
+}
+
+.jBox-hasTitle.jBox-Notice .jBox-content {
+  padding-top: 5px;
+}
+
+.jBox-Notice-black .jBox-container {
+  color: #fff;
+  background: #000;
+}
+
+.jBox-Notice-gray .jBox-container {
+  color: #333;
+  background: #f6f6f6;
+}
+
+.jBox-Notice-red .jBox-container {
+  color: #fff;
+  background: #d00;
+}
+
+.jBox-Notice-green .jBox-container {
+  color: #fff;
+  background: #5d0;
+}
+
+.jBox-Notice-blue .jBox-container {
+  color: #fff;
+  background: #07d;
+}
+
+.jBox-Notice-yellow .jBox-container {
+  color: #000;
+  background: #fd0;
+}
+
+@media (max-width: 768px) {
+  
+  .jBox-Notice .jBox-content {
+    padding: 10px 15px;
+  }
+  
+  .jBox-Notice .jBox-title {
+    padding: 10px 15px 0;
+  }
+  
+}
+
+@media (max-width: 500px) {
+  
+  .jBox-Notice .jBox-content {
+    padding: 8px 10px;
+  }
+  
+  .jBox-Notice .jBox-title {
+    padding: 8px 10px 0;
+  }
+  
+  .jBox-hasTitle.jBox-Notice .jBox-content {
+    padding-top: 0;
+  }
+}
 @charset "UTF-8";
 * {
   box-sizing: border-box;
@@ -3962,6 +3962,15 @@ pre {
   display: none;
 }
 
+button.dirty {
+  background-color: orangered;
+  color: white;
+}
+
+button.ready {
+  background-color: greenyellow;
+}
+
 .modal-form textarea {
   width: 100%;
   min-height: 100px;
@@ -3987,14 +3996,18 @@ pre {
   stroke: #8fbc8f !important;
 }
 
-.group-annotations .focused span, .group-annotations [id]:hover span {
+.group-annotations li span {
+  border-left: 1rem solid transparent;
+}
+
+.group-annotations li.focused span, .group-annotations li[id]:hover span {
   background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 2px 6px rgba(143, 188, 143, 0.24), 0 1px 2px rgba(143, 188, 143, 0.48);
   border-left: 1rem solid #8fbc8f;
   color: #333;
 }
 
-.group-annotations .focused span .footnote--link, .group-annotations [id]:hover span .footnote--link {
+.group-annotations li.focused span .footnote--link, .group-annotations li[id]:hover span .footnote--link {
   color: #333;
 }
 

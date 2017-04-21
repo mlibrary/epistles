@@ -4,7 +4,7 @@
 {% block main %}
 <h1 class="offscreen">{{ identifier }}</h1>
 <div class="box box__1">
-    <div class="box box__1_2 panels--scan" id="viewer" data-identifier="{{ identifier }}">
+    <div class="box box__1_2 panels--scan" id="viewer" data-identifier="{{ identifier }}" data-published_at="{{ published ? date(published.updated, 'U') }}" data-updated_at="{{ updated_at|date('U') }}">
     </div>
     <div class="box box__1_3 sidebar accordion" id="sidebar">
         <input type="radio" name="group1" id="group-annotations" checked>
@@ -63,4 +63,5 @@
     </form>
 </div>
 <script type="x-data" id="annotations-data">{{ annotations|raw }}</script>
+<script type="x-data" id="footnotes-data">{{ footnotes|raw }}</script>
 {% endblock %}

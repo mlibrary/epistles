@@ -29,6 +29,16 @@ pre {
   display: none; // FIXME
 }
 
+button.dirty {
+  background-color: orangered;
+  color: white;
+}
+
+button.ready {
+  background-color: greenyellow;
+  // color: white;
+}
+
 .modal-form {
   textarea {
     width: 100%;
@@ -58,22 +68,31 @@ pre {
 }
 
 .group-annotations {
-  .focused span, [id]:hover span {
-    // border-left: 1rem solid darkseagreen;
-    // box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.41);
-    // background-color: #eee;
-    // color: #333;
 
-    background: rgba(255,255,255,0.85);
-    // 143,188,143
-    // box-shadow: 0 2px 6px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.48);
-    box-shadow: 0 2px 6px rgba(143,188,143,0.24), 0 1px 2px rgba(143,188,143,0.48);
-    // border-radius: 4px;
-    border-left: 1rem solid #8fbc8f;
-    color: #333;
+  li {
 
-    .footnote--link {
+    span {
+      border-left: 1rem solid transparent;      
+    }
+
+
+    &.focused span, &[id]:hover span {
+      // border-left: 1rem solid darkseagreen;
+      // box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.41);
+      // background-color: #eee;
+      // color: #333;
+
+      background: rgba(255,255,255,0.85);
+      // 143,188,143
+      // box-shadow: 0 2px 6px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.48);
+      box-shadow: 0 2px 6px rgba(143,188,143,0.24), 0 1px 2px rgba(143,188,143,0.48);
+      // border-radius: 4px;
+      border-left: 1rem solid #8fbc8f;
       color: #333;
+
+      .footnote--link {
+        color: #333;
+      }
     }
   }
 }
