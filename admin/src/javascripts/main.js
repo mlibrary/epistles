@@ -5,6 +5,11 @@ dlxs.App = function(options) {
   this.identifier = null;
   this.info = {};
   this.dirty = [];
+  // this.dingbat = "&#10027;"; // open centre black star (U+272B)
+  this.dingbat = "&#10020;"; // heavy four balloon-spoked asterisk (U+2724)
+  // this.dingbat = "&#10043;"; // teardrop-spoked asterisk (U+273B)
+  // this.dingbat = "&#10055;"; // sparkle (U+2747)
+  // this.dingbat = "&#128846;"; // alchemical symbol for caput mortuum (U+1F74E)
 
   $.extend(this, options);
   console.log("AHOY", this);
@@ -72,21 +77,37 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
   var maxZoom = self.layer.maxZoom;
 
   self.annoData = {};
+  self.linkedData = {};
+  self.footnotesData = {};
+  self.footnotesIndex = 0;
+
 
   for(index in annoData) {
 
     var value = annoData[index].slice(0);
     
     var m;
-    var content = value.pop();
-    var plain_content = content.replace(/\{\d+\}/g, '');
+    var plain_content = linked_content = content = value.pop();
+    // var plain_content = content.replace(/\{\d+\}/g, '');
 
-    // var markers = content.match(/\{\d+\}/g);
-    // $.each(markers, function(mii, marker) {
-    //   var marker_idx = marker.replace(/\{(\d+)\}/, '$1');
-    //   // content = content.replace(marker, '<a href="#note' + marker_idx + '" class="footnote--link"><i class="fa fa-info-circle"></i></a>');
-    //   content = content.replace(marker, '<sup id="fnref:' + marker_idx + '"><a href="#fn:' + marker_idx + '" rel="footnote">' + marker_idx + '</a></sup>');
-    // })
+    var index_ = self._generateId();
+    var footnotesData = {};
+
+    var foototes = content.match(/\{[^}]+\}/g);
+    $.each(foototes, function(mii, footnote) {
+      var fid = self._generateId();
+      footnotesData[fid] = footnote.substr(1, footnote.length - 2);
+      linked_content = linked_content.replace(footnote, '<sup id="fnref:' + fid + '"><a href="#fn:' + fid + '" rel="footnote">' + self.dingbat + '</a></sup>');
+      plain_content = plain_content.replace(footnote, '');
+      // var marker_idx = marker.replace(/\{(\d+)\}/, '$1');
+      // content = content.replace(marker, '<a href="#note' + marker_idx + '" class="footnote--link"><i class="fa fa-info-circle"></i></a>');
+      // content = content.replace(marker, '<sup id="fnref:' + marker_idx + '"><a href="#fn:' + marker_idx + '" rel="footnote">' + marker_idx + '</a></sup>');
+    })
+
+    if ( ! $.isEmptyObject(footnotesData) ) {
+      self.footnotesData[index_] = footnotesData;
+    }
+
 
     if ( value[0] == 'polygon' ) {
       value.shift();
@@ -115,13 +136,13 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
     })
 
     // var index_ = parseInt(index, 10) + 1;
-    var index_ = self._generateId();
     $(m._path).attr("id", "region" + index_);
     $(m._path).attr("aria-labelledby", "text" + index_);
     $(m._path).data("content", plain_content);
     $(m._path).data('index', index_);
     $(m._path).addClass("highlight");
     self.annoData[index_] = content;
+    self.linkedData[index_] = linked_content;
 
   }
 
@@ -153,12 +174,13 @@ dlxs.App.prototype.drawAnnotations = function() {
       var layer = layers[i];
       var path = layer._path;
       var index = $(path).data('index');
-      var content = self.annoData[index];
+      var content = self.linkedData[index];
       var $span = $("<li><span>" + content + "</span></li>").appendTo(self.$annotations);
       // $span.appendTo($lines);
       $span.attr("id", "text" + index);
       $span.data('index', index);
     }
+    self._initFootnotes();
   }
 };
 
@@ -459,6 +481,10 @@ dlxs.App.prototype._initEvents = function() {
   })
 
   self.$annotations.on("click", "li[id]", function(e) {
+    console.log("AHOY CLICK", e.target.tagName);
+    if ( e.target.tagName == 'A' || e.target.tagName == 'BUTTON' ) { return ; }
+    // if ( self.in_footnote ) { self.in_footnote = false; return ; }
+    if ( $("[rel=footnote].is-active").size() ) { return ; }
     var $this = $(this);
     var index = $this.data('index');
     self.editAnnotation(index);
@@ -539,6 +565,36 @@ dlxs.App.prototype._initEvents = function() {
   })
 
 };
+
+dlxs.App.prototype._initFootnotes = function() {
+  var self = this;
+
+  var $footnotes = $(".group-footnotes .panel ol");
+  $footnotes.empty();
+
+  var layers = self.getSortedDrawnLayers();
+  if ( layers.length > 0 ) {
+    for(var i in layers) {
+      var layer = layers[i];
+      var path = layer._path;
+      var index = $(path).data('index');
+      var footnote_indexes = self.footnotesData[index];
+      if ( ! footnote_indexes ) { continue; }
+      // console.log("AHOY FOOTNOTE", footnote_indexes);
+      for(var fid in footnote_indexes) {
+        var content = self.footnotesData[index][fid];
+        var $li = $('<li class="footnote"><p><a href="fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
+        $li.attr("id", "fn:" + fid);
+      }
+    }
+  }
+
+  $.bigfoot({ 
+    positionContent: false,
+    activateCallback: function() { self.in_footnote = true; },
+    buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">{{FOOTNOTENUM}}</button></div>'
+  } );
+}
 
 dlxs.App.prototype.makeEditableAndHighlight = function(colour) {
     var range, sel = window.getSelection();

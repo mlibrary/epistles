@@ -37,21 +37,11 @@
             </label>
         {% endif %}
         <input type="radio" name="group1" id="group-footnotes">
-        <label for="group-footnotes" class="group">
+        <label for="group-footnotes" class="group group-footnotes">
             <div class="header">Footnotes</div>
             <div class="panel">
-                <dl>
-                    {% for key in footnotes|keys %}
-                        <dt>f{{ key }}</dt>
-                        <dd>{{ footnotes[key] }}</dd>
-                    {% endfor %}
-                </dl>
-                <form id="data-add-footnote">
-                    <p>
-                        <textarea name="text"></textarea>
-                    </p>
-                    <p><button class="button button-light">Add Footnote</button></p>
-                </form>
+                <ol>
+                </ol>
             </div>
         </label>
     </div>
