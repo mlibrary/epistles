@@ -28,8 +28,43 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 $app['admin.index'] = $app->share(function() use ($app) {
-    return "INDEX";
+    // in the real world this should be made more efficient?
+    $bbdbid = 1642074445;
+    $sql = "SELECT * FROM BookBagItems WHERE bbid = ? ORDER BY userorder";
+    $items = $app['db']->fetchAll($sql, array($bbdbid));
+    $results = [];
+    foreach($items as $item) {
+        $collid = $item['collid'];
+        $record = $app['db']->fetchAssoc("SELECT * FROM ${collid}, ${collid}_media WHERE ic_id = m_id AND istruct_isentryid = ?", array($item['itemid']));
+        // $tmp = str_replace('S-' . strtoupper($collid) . '-X-', '', $result['itemid']);
+        // list($m_id, $m_iid) = explode(']', $tmp);
+        $m_id = $record['m_id'];
+        $m_iid = $record['m_iid'];
+        $identifier = "$collid:$m_id:$m_iid";
+        $result = array('identifier' => $identifier, 'm_id' => $m_id, 'm_iid' => $m_iid, 'collid' => $collid, 'path' => substr($collid, 0, 1) . '/' . $collid);
+        $data = $app['db']->fetchAssoc("SELECT * FROM ImageClassAnnotation WHERE identifier = ? AND published = 0", array($identifier));
+        $published = $app['db']->fetchAssoc("SELECT * FROM ImageClassAnnotation WHERE identifier = ? AND published = 1", array($identifier));
+        $result['updated_at'] = $data ? $data['updated_at'] : null;
+        $result['published_at'] = $published ? $published['published_at'] : null;
+        $result['caption'] = explode('|||', $record['istruct_caption']);
+        $class = 'missing';
+        if ( $result['updated_at'] ) {
+            if ( $result['published_at'] && $result['published_at'] >= $result['updated_at'] ) {
+                $class = 'published';
+            } else {
+                $class = 'draft';
+            }
+        }
+        $result['class'] = $class;
+        $results[] = $result;
+    }
+
+    return $app['twig']->render('index.twig', array(
+        'results' => $results
+    ));
+
 });
+
 
 $app['admin.show'] = $app->share(function() use ($app) {
     $identifier = urldecode($app['request']->getQueryString());
@@ -42,35 +77,15 @@ $app['admin.show'] = $app->share(function() use ($app) {
     $data = $app['db']->fetchAssoc("SELECT * FROM ImageClassAnnotation WHERE identifier = ? AND published = 0", array($identifier));
     $published = $app['db']->fetchAssoc("SELECT * FROM ImageClassAnnotation WHERE identifier = ? AND published = 1", array($identifier));
     $is_modified = false;
-    if ( $published === false || $data['updated'] > $published['updated'] ) {
+    if ( $published === false || $data['updated_at'] > $published['updated_at'] ) {
         $is_modified = true;
     }
-
-    $tmp = json_decode(( $data['annotations'] ? $data['annotations'] : '[]' ), false);
-    $annotations = array();
-    foreach ( $tmp as $tuple ) {
-        $datum = array();
-        $datum['text'] = array_pop($tuple);
-        if ( $tuple[0] == 'polygon' ) {
-            array_shift($tuple);
-            $datum['type'] = 'polygon';
-            $datum['points'] = json_encode($tuple);
-        } else {
-            $datum['type'] = 'rectangle';
-            $datum['points'] = json_encode($tuple);
-        }
-        $annotations[] = $datum;
-    }
-
-    // $f = json_decode($data['footnotes'], true);
-    // $debug = print_r(array_keys($f), true);
 
     return $app['twig']->render('show.twig', array(
         'identifier' => $identifier,
         'published' => $published,
-        'updated_at' => $data['updated_at'],
-        'annotations' => $data['annotations'],
-        'footnotes' => $data['footnotes'],
+        'updated_at' => $data ? $data['updated_at'] : null,
+        'annotations' => $data ? $data['annotations'] : '[]',
         'original_translation' => json_decode(( $data['original_translation'] ? $data['original_translation'] : '[]' ), true),
         'asset' => $asset,
         'debug' => $debug,
@@ -79,13 +94,13 @@ $app['admin.show'] = $app->share(function() use ($app) {
 
 $app['admin.update'] = $app->share(function() use ($app) {
     $identifier = urldecode($app['request']->getQueryString());
-    // $json_data = file_get_contents('php://input');
-    // $message = $app['request']->attributes->get('message');
 
     $expr = [];
     $params = [];
+    $params[] = $identifier;
 
-    $possibles = array('annotations', 'footnotes');
+    // only annotations are updatable now
+    $possibles = array('annotations'); // , 'footnotes');
 
     foreach($possibles as $key) {
         if ( $app['request']->request->has($key) ) {
@@ -95,9 +110,18 @@ $app['admin.update'] = $app->share(function() use ($app) {
         }
     }
 
-    $params[] = $identifier;
+    // archive the current version
+    $sql = <<<SQL
+INSERT INTO ImageClassAnnotationArchive 
+SELECT NULL, identifier, published, annotations, original_translation, updated_at, published_at 
+FROM ImageClassAnnotation WHERE identifier = ? AND published = 0
+SQL;
+    $app['db']->executeUpdate($sql, array($identifier));
 
-    $sql = "UPDATE ImageClassAnnotation SET updated_at = NOW(), " . implode(',', $expr) . " WHERE identifier = ? AND published = 0";
+    // $sql = "UPDATE ImageClassAnnotation SET updated_at = NOW(), " . implode(',', $expr) . " WHERE identifier = ? AND published = 0";
+
+    $sql = "REPLACE INTO ImageClassAnnotation ( identifier, published, annotations, updated_at ) VALUES ( ?, 0, ?, NOW() )";
+
     $retval = $app['db']->executeUpdate($sql, $params);
 
     return $app->json(array('updated' => $retval, 'updated_at' => time()));
@@ -106,7 +130,15 @@ $app['admin.update'] = $app->share(function() use ($app) {
 
 $app['admin.publish'] = $app->share(function() use ($app) {
     $identifier = urldecode($app['request']->getQueryString());
-    return $app->json(array('updated' => $identifier));
+    $data = $app['db']->fetchAssoc("SELECT * FROM ImageClassAnnotation WHERE identifier = ? AND published = 0", array($identifier));
+    $sql = "REPLACE INTO ImageClassAnnotation ( identifier, published, annotations, original_translation, updated_at, published_at ) VALUES ( ?, 1, ?, ?, ?, NOW() )";
+    $params = [];
+    $params[] = $identifier;
+    $params[] = $data['annotations'];
+    $params[] = $data['original_translation'];
+    $params[] = $data['updated_at'];
+    $retval = $app['db']->executeUpdate($sql, $params);
+    return $app->json(array('updated' => $identifier, 'published_at' => time()));
 });
 
 $app->get('/', function() use ($app) {

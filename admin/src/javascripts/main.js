@@ -70,10 +70,6 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
   var viewer = self.viewer;
   var drawnItems = self.drawnItems;
 
-  var defaultRectOptions = function() {
-    return { clickable: true, color: randomColor({luminosity: 'bright',format:'hex'}),opacity: 0.75,weight:4,fillColor: '#eeeeee'};
-  };
-
   var maxZoom = self.layer.maxZoom;
 
   self.annoData = {};
@@ -87,27 +83,12 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
     var value = annoData[index].slice(0);
     
     var m;
-    var plain_content = linked_content = content = value.pop();
+    var content = value.pop();
     // var plain_content = content.replace(/\{\d+\}/g, '');
 
     var index_ = self._generateId();
-    var footnotesData = {};
 
-    var foototes = content.match(/\{[^}]+\}/g);
-    $.each(foototes, function(mii, footnote) {
-      var fid = self._generateId();
-      footnotesData[fid] = footnote.substr(1, footnote.length - 2);
-      linked_content = linked_content.replace(footnote, '<sup id="fnref:' + fid + '"><a href="#fn:' + fid + '" rel="footnote">' + self.dingbat + '</a></sup>');
-      plain_content = plain_content.replace(footnote, '');
-      // var marker_idx = marker.replace(/\{(\d+)\}/, '$1');
-      // content = content.replace(marker, '<a href="#note' + marker_idx + '" class="footnote--link"><i class="fa fa-info-circle"></i></a>');
-      // content = content.replace(marker, '<sup id="fnref:' + marker_idx + '"><a href="#fn:' + marker_idx + '" rel="footnote">' + marker_idx + '</a></sup>');
-    })
-
-    if ( ! $.isEmptyObject(footnotesData) ) {
-      self.footnotesData[index_] = footnotesData;
-    }
-
+    self._processText(index_, content);
 
     if ( value[0] == 'polygon' ) {
       value.shift();
@@ -115,7 +96,7 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
       $.each(value, function(ii, xy) {
         latlngs.push(viewer.options.crs.pointToLatLng(xy, maxZoom));
       })
-      m = L.polygon(latlngs, defaultRectOptions());
+      m = L.polygon(latlngs, self._defaultRectOptions());
     } else {
       var x = value[0];
       var y = value[1];
@@ -126,7 +107,7 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
       var min = viewer.unproject(minPoint, maxZoom);
       var max = viewer.unproject(maxPoint, maxZoom);
 
-      m = L.rectangle(L.latLngBounds(min, max), defaultRectOptions());                    
+      m = L.rectangle(L.latLngBounds(min, max), self._defaultRectOptions());                    
     }
 
     drawnItems.addLayer(m);
@@ -138,17 +119,40 @@ dlxs.App.prototype.initializeHighlightOverlay = function(annoData) {
     // var index_ = parseInt(index, 10) + 1;
     $(m._path).attr("id", "region" + index_);
     $(m._path).attr("aria-labelledby", "text" + index_);
-    $(m._path).data("content", plain_content);
+    // $(m._path).data("content", plain_content);
     $(m._path).data('index', index_);
     $(m._path).addClass("highlight");
-    self.annoData[index_] = content;
-    self.linkedData[index_] = linked_content;
 
   }
 
   self.drawAnnotations();
 
 };
+
+dlxs.App.prototype._defaultRectOptions = function() {
+  return { clickable: true, color: randomColor({luminosity: 'bright',format:'hex'}),opacity: 0.75,weight:4,fillColor: '#eeeeee'};
+};
+
+dlxs.App.prototype._processText = function(index, content) {
+  var self = this;
+
+  var footnotesData = {};
+  var plain_content = linked_content = content;
+  var footnotes = content.match(/\{[^}]+\}/g);
+  $.each(footnotes, function(mii, footnote) {
+    var fid = self._generateId();
+    footnotesData[fid] = footnote.substr(1, footnote.length - 2);
+    linked_content = linked_content.replace(footnote, '<sup id="fnref:' + fid + '"><a href="#fn:' + fid + '" rel="footnote">' + self.dingbat + '</a></sup>');
+    plain_content = plain_content.replace(footnote, '');
+  })
+
+  self.annoData[index] = content;
+  self.linkedData[index] = linked_content;
+
+  if ( ! $.isEmptyObject(footnotesData) ) {
+    self.footnotesData[index] = footnotesData;
+  }
+}
 
 dlxs.App.prototype.getSortedDrawnLayers = function() {
   var self = this;
@@ -180,7 +184,7 @@ dlxs.App.prototype.drawAnnotations = function() {
       $span.attr("id", "text" + index);
       $span.data('index', index);
     }
-    self._initFootnotes();
+    self.drawFootnotes();
   }
 };
 
@@ -230,27 +234,49 @@ dlxs.App.prototype._addDrawControl = function() {
     var tmp = drawnItems.getLayers();
     if ( tmp.length == 0 ) { return; }
     var layer = tmp[tmp.length - 1];
-    var se = layer.getBounds().getSouthEast();
-    var nw = layer.getBounds().getNorthWest();
-    var se_px = viewer.options.crs.latLngToPoint(se);
-    var nw_px = viewer.options.crs.latLngToPoint(nw);
-
+    var new_layer;
     var padding = 1;
-    var new_nw_px = L.point(nw_px.x, se_px.y + padding);
-    var new_se_px = L.point(se_px.x, se_px.y + padding + ( se_px.y - nw_px.y ));
+    if ( layer instanceof L.Rectangle ) {
+      var se = layer.getBounds().getSouthEast();
+      var nw = layer.getBounds().getNorthWest();
+      var se_px = viewer.options.crs.latLngToPoint(se);
+      var nw_px = viewer.options.crs.latLngToPoint(nw);
 
-    var new_bounds = L.latLngBounds(
-      viewer.options.crs.pointToLatLng(new_nw_px),
-      viewer.options.crs.pointToLatLng(new_se_px)
-      // L.latLng(se.lat, nw.lng),
-      // L.latLng(se.lat + ( se.lat - nw.lat - 0.0), se.lng)
-    );
-    var new_layer = L.rectangle(new_bounds, defaultRectOptions());
+      var new_nw_px = L.point(nw_px.x, se_px.y + padding);
+      var new_se_px = L.point(se_px.x, se_px.y + padding + ( se_px.y - nw_px.y ));
+
+      var new_bounds = L.latLngBounds(
+        viewer.options.crs.pointToLatLng(new_nw_px),
+        viewer.options.crs.pointToLatLng(new_se_px)
+      );
+      new_layer = L.rectangle(new_bounds, self._defaultRectOptions());
+    } else {
+      // polygon
+      padding = 0;
+      var se = layer.getBounds().getSouthEast();
+      var nw = layer.getBounds().getNorthWest();
+      var se_px = viewer.options.crs.latLngToPoint(se);
+      var nw_px = viewer.options.crs.latLngToPoint(nw);
+      var delta = se_px.y - nw_px.y;
+      var latlngs = layer.getLatLngs()[0];
+      var new_latlngs = [];
+      for(var i = 0; i < latlngs.length; i++) {
+        var pt = viewer.options.crs.latLngToPoint(latlngs[i]);
+        var new_pt = L.point(pt.x, pt.y + padding + delta);
+        new_latlngs.push(viewer.options.crs.pointToLatLng(new_pt));
+      }
+      new_layer = L.polygon([new_latlngs], self._defaultRectOptions());
+    }
     drawnItems.addLayer(new_layer);
+    var index_ = self._generateId();
+    $(new_layer._path).attr("id", "region" + index_);
+    $(new_layer._path).data('index', index_);
+    $(new_layer._path).addClass("highlight");
+
     new_layer.on('click', function(e) {
-      self.editRegion(this, $(this._path).data('content'));
+      self.editAnnotation($(this).data('index')); // , $(this._path).data('content'));
     })
-    self.editRegion(new_layer, getSelectedText());
+    self.editAnnotation(index_, self.getSelectedText());
 
   }, 'Repeat', 'action-draw-repeat').addTo(viewer);
 
@@ -262,7 +288,7 @@ dlxs.App.prototype.editAnnotation = function(index, text) {
   if ( window.deleting === true ) { return; }
   window.dragging = true;
 
-  text = text || self.annoData[index];
+  text = text || self.annoData[index] || '';
   var $path = $("#region" + index);
   self.$modalForm.find("textarea").val(text);
   self.$modalForm.data('index', index);
@@ -275,8 +301,9 @@ dlxs.App.prototype.editAnnotation = function(index, text) {
       repositionOnOpen: false,
       animation: 'slide',
       draggable: 'title',
+      closeButton: true,
       audio: '/e/epistles/vendor/jBox/audio/beep1',
-      overlay: false,
+      overlay: true,
       content: self.$modalForm,
       adjustPosition: true,
       title: 'Translation?',
@@ -294,7 +321,7 @@ dlxs.App.prototype.editAnnotation = function(index, text) {
         var index = self.$modalForm.data('index');
         var update = self.$modalForm.find("textarea").val();
         update = update.replace(/\s+/g, ' ').replace(/ +/g, ' ');
-        self.annoData[index] = update;
+        self._processText(index, update);
         self.drawAnnotations();
         self._toggleDirty('annotations');
       },
@@ -350,14 +377,15 @@ dlxs.App.prototype.editRegion = function(layer, text) {
         y: bounds.height
       },
       outside: 'xy',
-      confirm: function() {
+      confirm: function() {f
         window.dragging = false;
         var path = self.$modalForm.data('path');
         console.log("AHOY UPDATING", path, $(path).data('index'));
         var update = self.$modalForm.find("textarea").val();
         update = update.replace(/\s+/g, ' ').replace(/ +/g, ' ');
-        $(path).data('content', update);
-        self.annoData[$(path).data('index')] = update;
+        // $(path).data('content', update);
+        self._processText($(path).data('index'), update);
+        // self.annoData[$(path).data('index')] = update;
         self.drawAnnotations();
       }
     };
@@ -418,7 +446,10 @@ dlxs.App.prototype._addSaveControl = function() {
 
   L.easyButton('<i class="fa fa-floppy-o fa-1_8x "></i>', function() {
     var data = {};
-    if ( self.dirty.length == 0 ) { return ; }
+    if ( self.dirty.length == 0 ) { 
+      alert("Nothing to save.");
+      return ; 
+    }
 
     data.action = 'update';
 
@@ -433,9 +464,9 @@ dlxs.App.prototype._addSaveControl = function() {
       data: JSON.stringify(data), 
       success: function(response) { 
         console.log(response); 
+        self.updated_at = response.updated_at;
         self._toggleDirty(false); 
         self._toggleObsolete();
-        self.updated_at = response.updated_at;
       }, 
       contentType: 'application/json',
       dataType: 'json'
@@ -443,11 +474,19 @@ dlxs.App.prototype._addSaveControl = function() {
   }, 'Save Annotations', 'action-save-annotation').addTo(viewer);
 
   L.easyButton('<i class="fa fa-rocket fa-1_8x"></i>', function() {
+    if ( self.dirty.length ) {
+      alert("Please save changes before publishing");
+      return;
+    }
     $.ajax({
       type: 'POST',
       url: location.href,
       data: JSON.stringify({ action: 'publish' }),
-      success: function(response) { console.log(response) }, 
+      success: function(response) { 
+        console.log(response); 
+        self.published_at = response.published_at;
+        self._toggleObsolete();
+      }, 
       contentType: 'application/json',
       dataType: 'json'
     });
@@ -490,12 +529,29 @@ dlxs.App.prototype._initEvents = function() {
     self.editAnnotation(index);
   })
 
+  self.$footnotes.on("click", "a", function(e) {
+    e.preventDefault();
+    $(".pulse").removeClass("pulse");
+    var target = $(this).attr("href");
+    // target is the button
+    var $target = $("[id='" + target.substr(1) + "']");
+    console.log("AHOY TARGET", target.substr(1), $target);
+    var $span = $target.parents("li:first");
+    var index = $span.data('index');
+    $("#group-annotations").prop('checked', true);
+    var $pulsing = $span.add($("#region" + index));
+    $pulsing.addClass('pulse');
+    setTimeout(function() {
+      $pulsing.removeClass('pulse');
+    }, 10000);
+  })
+
   self.$scan.on("mouseenter mouseleave focusin focusout", "path.highlight", function(e) {
     var $this = $(this);
     var base_id = $this.data('index');
     var $text = $("#text" + base_id);
     if ( e.type == 'mouseenter' || e.type == 'focusin' ) {
-      var content = $this.data('content');
+      // var content = $this.data('content');
       var index = $this.data('index');
       $text.addClass("focused");
     } else {
@@ -566,10 +622,10 @@ dlxs.App.prototype._initEvents = function() {
 
 };
 
-dlxs.App.prototype._initFootnotes = function() {
+dlxs.App.prototype.drawFootnotes = function() {
   var self = this;
 
-  var $footnotes = $(".group-footnotes .panel ol");
+  var $footnotes = self.$footnotes;
   $footnotes.empty();
 
   var layers = self.getSortedDrawnLayers();
@@ -598,60 +654,64 @@ dlxs.App.prototype._initFootnotes = function() {
   } );
 }
 
-dlxs.App.prototype.makeEditableAndHighlight = function(colour) {
-    var range, sel = window.getSelection();
-    if (sel.rangeCount && sel.getRangeAt) {
-        range = sel.getRangeAt(0);
-    }
-    document.designMode = "on";
-    if (range) {
-        sel.removeAllRanges();
-        sel.addRange(range);
-    }
-    // Use HiliteColor since some browsers apply BackColor to the whole block
-    if (!document.execCommand("HiliteColor", false, colour)) {
-        document.execCommand("BackColor", false, colour);
-    }
-    document.designMode = "off";
-};
-
-dlxs.App.prototype.highlight = function(colour) {
-    var range, sel;
-    if (window.getSelection) {
-        // IE9 and non-IE
-        try {
-            if (!document.execCommand("BackColor", false, colour)) {
-                makeEditableAndHighlight(colour);
-            }
-        } catch (ex) {
-            makeEditableAndHighlight(colour)
-        }
-    } else if (document.selection && document.selection.createRange) {
-        // IE <= 8 case
-        range = document.selection.createRange();
-        range.execCommand("BackColor", false, colour);
-    }
-};
-
 dlxs.App.prototype.getSelectedText = function() {
-    var selection = window.getSelection();
-    var text = "";
-    if ( selection.toString() != "" ) {
-      text = selection.toString();
-      highlight(randomColor({luminosity: 'light',format:'hex'}));
-    }
-    return text;
+
+  function makeEditableAndHighlight(colour) {
+      var range, sel = window.getSelection();
+      if (sel.rangeCount && sel.getRangeAt) {
+          range = sel.getRangeAt(0);
+      }
+      document.designMode = "on";
+      if (range) {
+          sel.removeAllRanges();
+          sel.addRange(range);
+      }
+      // Use HiliteColor since some browsers apply BackColor to the whole block
+      if (!document.execCommand("HiliteColor", false, colour)) {
+          document.execCommand("BackColor", false, colour);
+      }
+      document.designMode = "off";
+  }
+
+  function highlight(colour) {
+      var range, sel;
+      if (window.getSelection) {
+          // IE9 and non-IE
+          try {
+              if (!document.execCommand("BackColor", false, colour)) {
+                  makeEditableAndHighlight(colour);
+              }
+          } catch (ex) {
+              makeEditableAndHighlight(colour)
+          }
+      } else if (document.selection && document.selection.createRange) {
+          // IE <= 8 case
+          range = document.selection.createRange();
+          range.execCommand("BackColor", false, colour);
+      }
+  }
+
+  var selection = window.getSelection();
+  var text = "";
+  if ( selection.toString() != "" ) {
+    text = selection.toString();
+    highlight(randomColor({luminosity: 'light',format:'hex'}));
+  }
+  return text;
 };
 
 $().ready(function() {
-  console.log("READY");
+  console.log("READY")
+  if ( ! $(".panels--scan").data('identifier') ) {
+    return;
+  }
 
   var annoData = JSON.parse($("#annotations-data").text());
-  var footnotesData = JSON.parse($("#footnotes-data").text());
 
   var app = new dlxs.App({
     $scan: $(".panels--scan"),
     $annotations: $(".group-annotations ul"),
+    $footnotes: $(".group-footnotes ol"),
     $modalForm: $("#modal-form"),
     // $metadata: $(".panels--metadata"),
     // $text: $(".panels--text .panels--inner"),
@@ -665,8 +725,7 @@ $().ready(function() {
     identifier: $(".panels--scan").data('identifier'),
     published_at: $(".panels--scan").data('published_at') || null,
     updated_at: $(".panels--scan").data('updated_at'),
-    annoData: annoData,
-    footnotesData: footnotesData
+    annoData: annoData
   });
 
   window.app = app;

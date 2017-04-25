@@ -1,0 +1,45 @@
+{% extends "layout.twig" %}
+{% block title %}Index{% endblock %}
+{% block main %}
+    <div class="container">
+        <h1>Epistles of Paul</h1>
+        <table class="results">
+            <thead>
+                <tr>
+                    <th>Scan</th>
+                    <th>Caption</th>
+                    <th>Updated</th>
+                    <th>Published</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr class="{{ result.class }}">
+                        <td class="thumbnail">
+                            <p>
+                                <a href="?{{ result.identifier }}"><img src="/cgi/i/image/api/image/{{ result.identifier }}/full/,200/0/default.jpg" /></a>
+                            </p>
+                            <p>
+                                <a class="button" href="?{{ result.identifier }}">Edit</a>
+                                &nbsp;
+                                <a target="APIS" class="button button-light" href="/{{ result.path }}/x-{{ result.m_id }}/{{ result.m_iid }}">APIS</a>
+                            </p>
+                        </td>
+                        <td class="caption">
+                            <ul>
+                                {% for line in result.caption %}
+                                    {% if line %}
+                                        <li>{{ line }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ result.updated_at }}</td>
+                        <td>{{ result.published_at }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

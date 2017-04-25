@@ -48,14 +48,17 @@ gulp.task('sass', function() {
     .pipe(autoprefixer(autoprefixerOptions));
 
   return es.concat(vendorFiles, localFiles)
-    .pipe(concat('main.css'))
+    .pipe(sourcemaps.init())
+      .pipe(concat('main.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(stylesheets.output));
 });
 
 gulp.task('scripts', function() {
   return gulp.src(javascripts.input)
-    .pipe(concat('main.js'))
+    .pipe(sourcemaps.init())
+      .pipe(concat('main.js'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(javascripts.output))
 })
 

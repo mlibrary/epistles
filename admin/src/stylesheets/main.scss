@@ -16,6 +16,10 @@
   padding: 10px 8px;
 }
 
+.jBox-overlay {
+  background-color: rgba(0,0,0,0);
+}
+
 .panel.footnote-print-only {
   display: flex !important;
 
@@ -77,6 +81,10 @@ button.ready {
     fill: #000;
     stroke:#8fbc8f !important;
   }
+
+  svg path.highlight.pulse {
+    animation: pulse2 1s 5;
+  }
 }
 
 .group-annotations {
@@ -84,9 +92,17 @@ button.ready {
   li {
 
     span {
-      border-left: 1rem solid transparent;      
+      border: 1px solid transparent;
+      border-left: 1rem solid transparent;
+      padding: 1px;
+      padding-left: 4px;
     }
 
+    &.pulse {
+      span {
+        animation: pulse 1s 5;
+      }
+    }
 
     &.focused span, &[id]:hover span {
       // border-left: 1rem solid darkseagreen;
@@ -109,6 +125,45 @@ button.ready {
   }
 }
 
+$color_pulse: #7FFF00;
+@keyframes pulse {
+  0% {
+    border-top-color: rgba($color_pulse, 0);
+    border-left-color: rgba($color_pulse, 0);
+    border-right-color: rgba($color_pulse, 0);
+    border-bottom-color: rgba($color_pulse, 0);
+    background-color: rgba($color_pulse, 0);
+  }
+  50% {
+    border-top-color: rgba($color_pulse, 0.75);
+    border-left-color: rgba($color_pulse, 0.75);
+    border-right-color: rgba($color_pulse, 0.75);
+    border-bottom-color: rgba($color_pulse, 0.75);
+    background-color: rgba($color_pulse, 0.75);
+  }
+  100% {
+    border-top-color: rgba($color_pulse, 0);
+    border-left-color: rgba($color_pulse, 0);
+    border-right-color: rgba($color_pulse, 0);
+    border-bottom-color: rgba($color_pulse, 0);
+    background-color: rgba($color_pulse, 0);
+  }
+}
+
+@keyframes pulse2 {
+  0% {
+    fill: $color_pulse;
+    fill-opacity: 0;
+  }
+  50% {
+    fill: $color_pulse;
+    fill-opacity: 0.75;
+  }
+  100% {
+    fill: $color_pulse;
+    fill-opacity: 0;
+  }
+}
 
 // GRID
 
@@ -144,4 +199,58 @@ button.ready {
   }
 }
 
+// RESULTS
 
+table.results {
+  border: 1px solid transparent;
+  border-collapse: separate;
+  border-spacing: 0.25em 1em;
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #fbfbfb;
+    }
+
+    tr {
+      td.thumbail {
+        border-left: 4px solid transparent;
+      }
+    }
+
+    tr.missing {
+      td.thumbnail {
+        border-left: 4px solid #666;
+      }
+    }
+
+    tr.draft {
+      td.thumbnail {
+        border-left: 4px solid red;
+      }
+    }
+
+  }
+  td {
+    vertical-align: top;
+    ul {
+      margin: 0;
+      list-style-type: none;
+
+      li:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 80em) {
+  .container {
+    width: 80rem;
+    max-width: 80rem;
+  }
+}
+
+@media only screen and (min-width: 75em) {
+  .container {
+    width: 96rem;
+  }
+}
