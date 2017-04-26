@@ -1,0 +1,36 @@
+{% extends "layout.twig" %}
+
+{% block tail %}
+    <script type="text/javascript" src="./assets/javascripts/main.js?_={{ date()|date('U') }}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="pages pages--viewer">
+        <h1 class="offscreen" aria-live="polite"></h1>
+
+        <div class="panels--wrap" id="stickable">
+            <div class="panels--scan">
+                <button id="action-reveal-info" role="button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 28' height="3rem"><path d='M16 21.5v-2.5c0-0.281-0.219-0.5-0.5-0.5h-1.5v-8c0-0.281-0.219-0.5-0.5-0.5h-5c-0.281 0-0.5 0.219-0.5 0.5v2.5c0 0.281 0.219 0.5 0.5 0.5h1.5v5h-1.5c-0.281 0-0.5 0.219-0.5 0.5v2.5c0 0.281 0.219 0.5 0.5 0.5h7c0.281 0 0.5-0.219 0.5-0.5zM14 7.5v-2.5c0-0.281-0.219-0.5-0.5-0.5h-3c-0.281 0-0.5 0.219-0.5 0.5v2.5c0 0.281 0.219 0.5 0.5 0.5h3c0.281 0 0.5-0.219 0.5-0.5zM24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z'></path></svg><span class="offscreen">Show Page Information</span></button>
+                <button id="action-reveal-scan" role="button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 28' height="3rem"><path d='M17.141 16.859l-2.281 2.281c-0.203 0.203-0.516 0.203-0.719 0l-2.141-2.141-2.141 2.141c-0.203 0.203-0.516 0.203-0.719 0l-2.281-2.281c-0.203-0.203-0.203-0.516 0-0.719l2.141-2.141-2.141-2.141c-0.203-0.203-0.203-0.516 0-0.719l2.281-2.281c0.203-0.203 0.516-0.203 0.719 0l2.141 2.141 2.141-2.141c0.203-0.203 0.516-0.203 0.719 0l2.281 2.281c0.203 0.203 0.203 0.516 0 0.719l-2.141 2.141 2.141 2.141c0.203 0.203 0.203 0.516 0 0.719zM20.5 14c0-4.688-3.813-8.5-8.5-8.5s-8.5 3.813-8.5 8.5 3.813 8.5 8.5 8.5 8.5-3.813 8.5-8.5zM24 14c0 6.625-5.375 12-12 12s-12-5.375-12-12 5.375-12 12-12 12 5.375 12 12z'></path></svg><span class="offscreen">Show Page Scan</span></button>
+                <div class="panels--scan--viewer"></div>
+                <div class="translation-container invisible" id="annotation">
+                  <p class="translation-text"></p>
+                </div>
+            </div>
+            <div class="panels--text">
+                <div class="panels--inner" data-box="true">
+                    <pre>RIGHT SIDE</pre>
+                </div>
+            </div>
+            <button id="action-go-previous" class="action-go-page" data-delta="-1" role="button"><span class="offscreen">Previous page</span></button>
+            <button id="action-go-next" class="action-go-page" data-delta="1" role="button"><span class="offscreen">Next page</span></button>
+        </div>
+        <div class="panels--wrap">
+            <div class="panels--metadata">
+                <div class="panels--inner">
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

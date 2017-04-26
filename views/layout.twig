@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Epistles of Paul: {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="shortcut icon"type="image/x-icon" href="data:image/x-icon;," />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script src="https://unpkg.com/sticky-kit@1.1.3/dist/sticky-kit.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./assets/stylesheets/main.css?_={{ date()|date('U') }}" />
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+
+    <script src="https://use.fontawesome.com/7b7d9e1e53.js"></script>
+
+    {% block head %}{% endblock %}
+
+</head>
+<body class="{{ _context.cls }}">
+
+  <header class="site-header">
+    <div class="site-header-container">
+      <div class="site-heading">
+        <ul class="logo-item-list">
+          <li class="logo-block-m">
+            <a href="http://umich.edu" class="logo-link">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAABYCAYAAADV/4jnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA8dJREFUeNrsnd9x2kAQxg+PJ8+UQDqACqJ0ICoIdKBUAFQgOog6MB2EDkwJpAM/8+LcOSsPhH+SkGC/ve+b0fDgGY+0P+99t7sn3Ht//TJxzv1wujTtjXZbBywf17n/+Kbpnp79NfBXoixWL/4aAYNO/cdM2309KY3X0AcsBwUdkueXxnt7Uhy3zAcuAeQdQPcJu8Fy7oH3gbJ6rtASYWD3xb8RQA81+jQS7KDEBzJTDhrijxIBdlAumaPZpweE3WJANfq39ClShAAiwQ6ZnSsDre6erMAOmkjDgmVWBLDL5XygIKtzWW0cYRsux6TZk6EFDhH2h39LA4NlVgSwg2YPaqe+IPm0Fdh3L8ekuZOgBgsd9sDdacKEVmZZhB2Udt1ORfZpa7BL/+6yDModQDs0Ftj9rvxbmjgTC0GyAvujHHMtjxg1nzqJHXZQ1nI7FbbMigF2a+WYNG2GlgJjEfbNO2dp1sysBcYi7KCkaTvVSpl1Sr0aQXgHfL5Rb7Tb1IQdQKdgz7nwzzmPNbM/N1h1/FuaM6nVYFiHXbl0QjgdStjXlco5sWs+DXXqhLDPK79yumVmrcyKGfbZHbY0YbIYghAL7KCjlwWttUMJ+1D/vyxo3qf39eziUyjHvsrSncT04DHCDpn8O4YNWezL+Kd/x/jQscJ2hE0RNkXYXWoJHtc3fxWEXU0Lf22AYf/01x/CrqDeaBcyYyoZgqbC33+h8cbUerYcOliAgd5IVtOzGwAP3r0Cgj2VVYmwmwbQX1sEn657BIqwT/v3WPltrmQVYull3L/LzSTr7BaBz/3HWuGtjTX7NCTsMrDKyrFwhHeNEjwo2Mr8e13lrDZh3wY8ZNKjN0MwPg0NW4CHxsUjyxzIf2uBPPV6lH8vPegVYsBgYUtm3bs1idjCNZHZTgYOxT19GqXMMgdbdC//Vt8ONQ97bxzapVZax5axZXbZTu3Kv7eIZZZZ2AK8q3HoGNmnTcIu61/X7jgU3qfNwm7Zv9cIY8uYM7tsp95aCyPM0AlbgM/dbeNQMz59EBf5CinE7xIJy+z3cz+Ud69fXf1XcpfSez/3exP378VAZrai7G5SMm0ugeYyrht4KMWqbrJM+nQ0sAV41XYq5NiSsE/X35c2XAXq2JKwj7P7UjtV9VschN0MeOGOx6HwY0vCPq+Qwfu+vLDUDiXsw+ze33GvrLVDCfu0f4+dkbFlHcX41Vguhp03MztyETZhU4RNETZF2BRhU4RNETZF2BRhU4RNEXZsClOvrdP5/WLX9KhDB2+g8XJ/BRgAnv80rcL5FKcAAAAASUVORK5CYII=" alt="Go to the University of Michigan Library homepage" />
+            </a>
+          </li>
+          <li class="logo-library">
+            <a href="http://lib.umich.edu">Library</a>
+          </li>
+          <li class="logo-app">
+              <span>
+                  <a href="/e/epistles/index2.php">Epistles of Paul</a>
+              </span>
+          </li>
+        </ul>
+      </div>
+      
+      <ul class="site-header-list">
+        <li>
+          <a href="http://www.lib.umich.edu/papyrus-collection" class="white-text">Papyrology Collection</a>
+        </li>
+        <li>
+          <a href="http://quod.lib.umich.edu/" class="white-text">MLibrary Collections</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="announce" class="offscreen" aria-live="polite"></div>
+
+  {% block main %}{% endblock %}
+
+  {% block tail %}{% endblock %}
+
+</body>
+</html>

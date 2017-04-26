@@ -136,6 +136,8 @@ dlxs.App.prototype._defaultRectOptions = function() {
 dlxs.App.prototype._processText = function(index, content) {
   var self = this;
 
+  content = content.replace(/</g, '&lt;');
+
   var footnotesData = {};
   var plain_content = linked_content = content;
   var footnotes = content.match(/\{[^}]+\}/g);

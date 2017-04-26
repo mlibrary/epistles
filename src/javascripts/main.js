@@ -5,6 +5,8 @@ dlxs.App = function(options) {
   this.identifier = null;
   this.info = {};
   this.default_title = document.title;
+  this.dingbat = "&#10020;"; // heavy four balloon-spoked asterisk (U+2724)
+
 
   this.routes = { home: true, help: true, viewer: true };
 
@@ -360,6 +362,14 @@ dlxs.App.prototype.loadTranslationOverlay = function(identifier) {
 
     }
 
+    if ( annoData.annotations.length == 0 ) {
+      // no annotations were made
+      for(index in self.original_translation) {
+        var content = self.original_translation[index];
+        self._processText(index, content);
+      }
+    }
+
     self.drawAnnotations();
 
   })
@@ -377,9 +387,12 @@ dlxs.App.prototype._defaultRectOptions = function() {
 dlxs.App.prototype._processText = function(index, content) {
   var self = this;
 
+  content = content.replace(/</g, '&lt;');
+
   var footnotesData = {};
   var plain_content = linked_content = content;
   var footnotes = content.match(/\{[^}]+\}/g);
+
   $.each(footnotes, function(mii, footnote) {
     var fid = self._generateId();
     footnotesData[fid] = footnote.substr(1, footnote.length - 2);
@@ -410,26 +423,41 @@ dlxs.App.prototype.getSortedDrawnLayers = function() {
   return layers;
 };
 
+dlxs.App.prototype.getSortedIndexes = function() {
+  var self = this;
+  var results = [];
+  var layers = self.getSortedDrawnLayers();
+  if ( layers.length > 0 ) {
+    for(var i in layers) {
+      results.push($(layers[i]._path).data('index'));
+    }
+  } else {
+    for(var i in self.original_translation) {
+      results.push(i);
+    }
+  }
+  return results;
+};
+
 dlxs.App.prototype.drawAnnotations = function() {
   var self = this;
   self.$text.empty();
 
-  var layers = self.getSortedDrawnLayers();
-  if ( layers.length > 0 ) {
-    for(var i in layers) {
-      var layer = layers[i];
-      var path = layer._path;
-      var index = $(path).data('index');
-      var content = self.linkedData[index];
-      var $span = $("<span>" + content + "</span>").appendTo(self.$text);
-      // $span.appendTo($lines);
-      $span.attr("id", "text" + index);
-      $span.data('index', index);
+  // var layers = self.getSortedDrawnLayers();
+  var indexes = self.getSortedIndexes();
+  var hasLayers = self.drawnItems.getLayers().length > 0;
+  for(var index in indexes) {
+    var content = self.linkedData[index];
+    // var $span = $("<span>" + content + "</span>").appendTo(self.$text);
+    var $span = $("<span></span>").appendTo(self.$text);
+    $span.html(content);
+    if ( hasLayers ) {
+     $span.attr("id", "text" + index);
+     $span.data('index', index); 
     }
-    self.drawFootnotes();
-  } else {
-    self.$text.html(self.original_translation.join("<br />"));
   }
+
+  self.drawFootnotes();
 };
 
 dlxs.App.prototype.drawFootnotes = function() {
@@ -443,23 +471,18 @@ dlxs.App.prototype.drawFootnotes = function() {
   var $footnotes = $('<div class="footnotes"><ol></ol></div>').appendTo(self.$metadata.find(".panels--inner"));
   $footnotes = $footnotes.find('ol');
 
-  var layers = self.getSortedDrawnLayers();
-  if ( layers.length > 0 ) {
-    for(var i in layers) {
-      var layer = layers[i];
-      var path = layer._path;
-      var index = $(path).data('index');
-      var footnote_indexes = self.footnotesData[index];
-      if ( ! footnote_indexes ) { continue; }
-      // console.log("AHOY FOOTNOTE", footnote_indexes);
-      for(var fid in footnote_indexes) {
-        var content = self.footnotesData[index][fid];
-        var $li = $('<li class="footnote"><p><a href="#fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
-        $li.attr("id", "fn:" + fid);
-      }
+  var indexes = self.getSortedIndexes();
+  for(var index in indexes) {
+    var footnote_indexes = self.footnotesData[index];
+    if ( ! footnote_indexes ) { continue; }
+    for(var fid in footnote_indexes) {
+      console.log("AHOY FOOTNOTE", footnote_indexes, fid);
+      var content = self.footnotesData[index][fid];
+      var $li = $('<li class="footnote"><p><a href="#fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
+      $li.attr("id", "fn:" + fid);
     }
   }
-
+  
   $.bigfoot({ 
     positionContent: true,
     activateCallback: function() { self.in_footnote = true; },

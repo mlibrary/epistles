@@ -1527,6 +1527,86 @@ body[class*=" jBox-blockScroll-"] {
 
 }
 
+.jBox-Notice {
+  transition: margin .2s;
+}
+
+.jBox-Notice .jBox-container {
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, .25), inset -1px -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.jBox-Notice .jBox-content {
+  border-radius: 3px;
+  padding: 12px 20px;
+}
+
+.jBox-Notice .jBox-title {
+  padding: 12px 20px 0;
+  font-weight: bold;
+}
+
+.jBox-hasTitle.jBox-Notice .jBox-content {
+  padding-top: 5px;
+}
+
+.jBox-Notice-black .jBox-container {
+  color: #fff;
+  background: #000;
+}
+
+.jBox-Notice-gray .jBox-container {
+  color: #333;
+  background: #f6f6f6;
+}
+
+.jBox-Notice-red .jBox-container {
+  color: #fff;
+  background: #d00;
+}
+
+.jBox-Notice-green .jBox-container {
+  color: #fff;
+  background: #5d0;
+}
+
+.jBox-Notice-blue .jBox-container {
+  color: #fff;
+  background: #07d;
+}
+
+.jBox-Notice-yellow .jBox-container {
+  color: #000;
+  background: #fd0;
+}
+
+@media (max-width: 768px) {
+  
+  .jBox-Notice .jBox-content {
+    padding: 10px 15px;
+  }
+  
+  .jBox-Notice .jBox-title {
+    padding: 10px 15px 0;
+  }
+  
+}
+
+@media (max-width: 500px) {
+  
+  .jBox-Notice .jBox-content {
+    padding: 8px 10px;
+  }
+  
+  .jBox-Notice .jBox-title {
+    padding: 8px 10px 0;
+  }
+  
+  .jBox-hasTitle.jBox-Notice .jBox-content {
+    padding-top: 0;
+  }
+}
+
 .jBox-Image .jBox-container {
   background-color: transparent;
 }
@@ -1675,86 +1755,6 @@ body[class*=" jBox-blockScroll-"] {
   border-radius: 50%;
 }
 
-
-.jBox-Notice {
-  transition: margin .2s;
-}
-
-.jBox-Notice .jBox-container {
-  border-radius: 3px;
-  box-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, .25), inset -1px -1px 0 0 rgba(0, 0, 0, .1);
-}
-
-.jBox-Notice .jBox-content {
-  border-radius: 3px;
-  padding: 12px 20px;
-}
-
-.jBox-Notice .jBox-title {
-  padding: 12px 20px 0;
-  font-weight: bold;
-}
-
-.jBox-hasTitle.jBox-Notice .jBox-content {
-  padding-top: 5px;
-}
-
-.jBox-Notice-black .jBox-container {
-  color: #fff;
-  background: #000;
-}
-
-.jBox-Notice-gray .jBox-container {
-  color: #333;
-  background: #f6f6f6;
-}
-
-.jBox-Notice-red .jBox-container {
-  color: #fff;
-  background: #d00;
-}
-
-.jBox-Notice-green .jBox-container {
-  color: #fff;
-  background: #5d0;
-}
-
-.jBox-Notice-blue .jBox-container {
-  color: #fff;
-  background: #07d;
-}
-
-.jBox-Notice-yellow .jBox-container {
-  color: #000;
-  background: #fd0;
-}
-
-@media (max-width: 768px) {
-  
-  .jBox-Notice .jBox-content {
-    padding: 10px 15px;
-  }
-  
-  .jBox-Notice .jBox-title {
-    padding: 10px 15px 0;
-  }
-  
-}
-
-@media (max-width: 500px) {
-  
-  .jBox-Notice .jBox-content {
-    padding: 8px 10px;
-  }
-  
-  .jBox-Notice .jBox-title {
-    padding: 8px 10px 0;
-  }
-  
-  .jBox-hasTitle.jBox-Notice .jBox-content {
-    padding-top: 0;
-  }
-}
 * {
   box-sizing: border-box;
 }
@@ -3675,6 +3675,20 @@ body.access.show .site-header {
   margin-right: auto;
 }
 
+.footnotes.footnote-print-only {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.footnotes.footnote-print-only ol.footnote-print-only {
+  display: block !important;
+}
+
+.footnotes.footnote-print-only ol.footnote-print-only li {
+  display: list-item !important;
+}
+
 .action-page-home {
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 28'><path d='M22 15.5v7.5c0 0.547-0.453 1-1 1h-6v-6h-4v6h-6c-0.547 0-1-0.453-1-1v-7.5c0-0.031 0.016-0.063 0.016-0.094l8.984-7.406 8.984 7.406c0.016 0.031 0.016 0.063 0.016 0.094zM25.484 14.422l-0.969 1.156c-0.078 0.094-0.203 0.156-0.328 0.172h-0.047c-0.125 0-0.234-0.031-0.328-0.109l-10.813-9.016-10.813 9.016c-0.109 0.078-0.234 0.125-0.375 0.109-0.125-0.016-0.25-0.078-0.328-0.172l-0.969-1.156c-0.172-0.203-0.141-0.531 0.063-0.703l11.234-9.359c0.656-0.547 1.719-0.547 2.375 0l3.813 3.187v-3.047c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v6.375l3.422 2.844c0.203 0.172 0.234 0.5 0.063 0.703z'></path></svg>");
   background-size: 24px 24px;
@@ -3804,6 +3818,10 @@ body.access.show .site-header {
 }
 
 .bigfoot-footnote__button:after {
+  color: #666 !important;
+}
+
+.bigfoot-footnote__content {
   color: #666 !important;
 }
 
