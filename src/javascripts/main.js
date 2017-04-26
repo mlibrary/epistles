@@ -9,7 +9,8 @@ dlxs.App = function(options) {
   this.routes = { home: true, help: true, viewer: true };
 
   $.extend(this, options);
-  console.log("AHOY", this);
+  this.$scan.height($(window).height() * 1.0);
+
   $("body").on("app:pagechange", function(e, args) {
     console.log("AHOY PAGE CHANGE", args);
     self.updateDocumentTitle(args)
@@ -39,7 +40,7 @@ dlxs.App.prototype.resizeViewer = function() {
   this.$scan.height($(window).height() * 1.0);
   this.reflowText();
   if ( $(window).width() <= 800 ) {
-    // our breakpoint
+    // our breakpoint1
     this.$scan.trigger('sticky_kit:detach');
     this.$info = this.$text;
   } else {
@@ -50,19 +51,21 @@ dlxs.App.prototype.resizeViewer = function() {
 
 dlxs.App.prototype.showPage = function(page) {
 
-  this.$pages.addClass("hidden");
+  // this.$pages.addClass("hidden");
 
-  if ( ! page ) { page = 'home'; }
-  var target = page;
-  if ( target == 'viewer' ) { page = app.identifiers[0]; }
-  else if ( ! this.routes[page] ) { target = 'viewer'; }
+  // if ( ! page ) { page = 'home'; }
+  // var target = page;
+  // if ( target == 'viewer' ) { page = app.identifiers[0]; }
+  // else if ( ! this.routes[page] ) { target = 'viewer'; }
 
 
-  this.$pages.filter(".pages--" + target).removeClass("hidden");
+  // this.$pages.filter(".pages--" + target).removeClass("hidden");
 
-  if ( page != 'help' ) {
-    this.$pages.filter(".pages--help").find(".action-page").data('target', page);
-  }
+  // if ( page != 'help' ) {
+  //   this.$pages.filter(".pages--help").find(".action-page").data('target', page);
+  // }
+
+  if ( page == 'start' ) { page = app.identifiers[0]; }
 
   if ( ! this.routes[page] ) {
     this.loadScan(page);
@@ -154,7 +157,7 @@ dlxs.App.prototype.initializeScanViewer = function() {
 
   setTimeout(function() {
     var $zoom = $(".leaflet-control-zoom.leaflet-bar.leaflet-control");
-    $('<div class="leaflet-control leaflet-bar"><a class="action-page action-page-home" data-target="home" role="button" aria-label="Go Home" title="Go Home"></a><a class="action-page action-page-help" data-target="help" role="button" aria-label="Help" title="Help"></a></div>').insertBefore($zoom);
+    $('<div class="leaflet-control leaflet-bar"><a href="?" class="action-page action-page-home" data-target="home" role="button" aria-label="Go Home" title="Go Home"></a><a href="?help" class="action-page action-page-help" data-target="help" role="button" aria-label="Help" title="Help"></a></div>').insertBefore($zoom);
   }, 0);
 
   self.$text.on("mouseenter mouseleave", "span[id]", function(e) {
@@ -171,16 +174,16 @@ dlxs.App.prototype.initializeScanViewer = function() {
 
   self.$scan.on("mouseenter mouseleave focusin focusout", "path.highlight", function(e) {
     var $this = $(this);
-    var base_id = $this.data('base_id');
-    var $text = $("#text" + base_id);
+    var index = $this.data('index');
+    var line = $this.data('line');
+    var $text = $("#text" + index);
     if ( e.type == 'mouseenter' || e.type == 'focusin' ) {
-      var content = $this.data('content');
-      var index = $this.data('index');
+      var content = self.plainData[index];
       $text.addClass("focused");
 
       if ( true || self.$info == self.$text ) {
         self.$annotation.removeClass('invisible');
-        self.$annotation.find(".translation-text").html('<span class="line-number">LINE: ' + index + '</span>' + content);
+        self.$annotation.find(".translation-text").html('<span class="line-number">LINE: ' + line + '</span>' + content);
       } else if ( ! $text.isOnScreen() ) {
           // self.$text.scrollTop(self.$text.scrollTop() +  $text.position().top - 20);
           var delta = ( $text.position().top + $text.height() ) - $(window).height() + 20; //  - $(window).scrollTop();
@@ -233,8 +236,10 @@ dlxs.App.prototype.loadScanData = function(identifier) {
     service_url = service_url.replace('https://quod.lib.umich.edu', location.protocol + "//" + location.host);
     this.layer = L.imageOverlay(service_url, bounds);
   } else {
+    self.height = info['height'];
+    self.width = info['width'];
     viewer.setMaxZoom(Infinity); viewer.setMinZoom(0);
-    this.layer = L.tileLayer.iiif(service_url + '/info.json');
+    this.layer = L.tileLayer.iiif(service_url + '/info.json', { bestFit: true });
     this.layer.on('load', function(e) { 
       e.target.off('load'); 
       self.loadMask(identifier); 
@@ -283,20 +288,27 @@ dlxs.App.prototype.loadTranslationOverlay = function(identifier) {
 
   var self = this;
 
-  var data_href = this.info[identifier]['annotations']['@id'];
-  data_href = data_href.replace('https://quod.lib.umich.edu', location.protocol + "//" + location.host);
+  self.annoData = {};
+  self.linkedData = {};
+  self.plainData = {};
+  self.footnotesData = {};
+  self.footnotesIndex = 0;
+
+  var viewer = self.viewer;
+  var drawnItems = self.drawnItems;
+
+  // var data_href = this.info[identifier]['annotations']['@identifier'];
+  // data_href = data_href.replace('https://quod.lib.umich.edu', location.protocol + "//" + location.host);
+  var data_href = location.protocol + "//" + location.host + location.pathname;
 
   var maxZoom = this.layer.maxZoom;
-  this.content_map = {};
 
-  $.getJSON(data_href, {_: new Date().getTime()}, function(annoData) {
+  $.getJSON(data_href, { identifier: identifier, action: 'annotation', _: new Date().getTime()}, function(annoData) {
 
-    var width = annoData.width;
-    var height = annoData.height;
+    var width = self.width;
+    var height = self.height;
 
-    // var dimensions = viewer.source.dimensions;
-    // var scale = 1 / dimensions.x;
-    // var placement = OpenSeadragon.OverlayPlacement.BOTTOM;
+    self.original_translation = annoData.original_translation;
 
     var defaultRectOptions = function() {
       return { weight: 1.0, color: '#666', fillColor: '#eeeeee' };
@@ -304,25 +316,23 @@ dlxs.App.prototype.loadTranslationOverlay = function(identifier) {
 
     self.viewer.addLayer(self.drawnItems);
 
-    for(index in annoData.regions) {
-      var value = annoData.regions[index].slice(0);
+    for(index in annoData.annotations) {
 
+      var value = annoData.annotations[index].slice(0);
+      
       var m;
       var content = value.pop();
-      var plain_content = content.replace(/\{\d+\}/g, '');
+      // var plain_content = content.replace(/\{\d+\}/g, '');
 
-      var markers = content.match(/\{\d+\}/g);
-      $.each(markers, function(mii, marker) {
-        var marker_idx = marker.replace(/\{(\d+)\}/, '$1');
-        // content = content.replace(marker, '<a href="#note' + marker_idx + '" class="footnote--link"><i class="fa fa-info-circle"></i></a>');
-        content = content.replace(marker, '<sup id="fnref:' + marker_idx + '"><a href="#fn:' + marker_idx + '" rel="footnote">' + marker_idx + '</a></sup>');
-      })
+      var index_ = self._generateId();
+
+      self._processText(index_, content);
 
       if ( value[0] == 'polygon' ) {
         value.shift();
         var latlngs = [];
         $.each(value, function(ii, xy) {
-          latlngs.push(self.viewer.options.crs.pointToLatLng(xy, maxZoom));
+          latlngs.push(viewer.options.crs.pointToLatLng(xy, maxZoom));
         })
         m = L.polygon(latlngs, defaultRectOptions());
       } else {
@@ -332,58 +342,131 @@ dlxs.App.prototype.loadTranslationOverlay = function(identifier) {
         var h = value[3];
         var minPoint = L.point(x, y);
         var maxPoint = L.point(x + w, y + h);
-        var min = self.viewer.unproject(minPoint, maxZoom);
-        var max = self.viewer.unproject(maxPoint, maxZoom);
+        var min = viewer.unproject(minPoint, maxZoom);
+        var max = viewer.unproject(maxPoint, maxZoom);
 
-        m = L.rectangle(L.latLngBounds(min, max), defaultRectOptions());                                    
+        m = L.rectangle(L.latLngBounds(min, max), defaultRectOptions());                    
       }
 
-      // m.bindTooltip(content, { permanent: false, direction: 'top' }).addTo(viewer);
-      self.drawnItems.addLayer(m);
+      drawnItems.addLayer(m);
 
-      $(m._path).attr("id", "region" + m._leaflet_id);
-      $(m._path).attr("aria-labelledby", "text" + m._leaflet_id);
-      $(m._path).data('base_id', m._leaflet_id);
-      $(m._path).data("content", plain_content);
-      $(m._path).data('index', parseInt(index, 10) + 1);
+      // var index_ = parseInt(index, 10) + 1;
+      $(m._path).attr("id", "region" + index_);
+      $(m._path).attr("aria-labelledby", "text" + index_);
+      // $(m._path).data("content", plain_content);
+      $(m._path).data('index', index_);
+      $(m._path).data('line', index + 1);
       $(m._path).addClass("highlight");
-      self.content_map[m._leaflet_id] = content;
 
-    };
-
-    self.$text.empty();
-
-    if ( annoData.regions.length > 0 ) {
-      $.each(self.content_map, function(m_id, content) {
-        var $span = $("<span>" + content + "</span>").appendTo(self.$text);
-        // $span.appendTo($lines);
-        $span.attr("id", "text" + m_id);
-        $span.data('base_id', m_id);
-      })
-      self.reflowText();
-    } else {
-      self.$text.html(annoData.lines.join("<br />\n"));
     }
 
-    self.footnotes_data = {};
-    if ( $(".footnotes").size() ) {
-      $(".footnotes").remove();
-    }
-    $('<h3 class="footnotes">Footnotes</h3>').appendTo(self.$inner);
-    var $div = $('<div class="footnotes"><ol></ol></div>').appendTo(self.$metadata.find(".panels--inner"));
-    var $ol = $div.find('ol');
-    $.each(annoData.footnote, function(key, value) {
-      self.footnotes_data[key] = value;
-      var $li = $('<li class="footnote"><p>' + value + ' <a href="#fnref:' + key + '" title="return" ↩</a></p></li>').appendTo($ol);
-      $li.attr('id', "fn:" + key);
-    })
-
-    $.bigfoot({ 
-      positionContent: true,
-      buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">{{FOOTNOTENUM}}</button></div>'
-    } );
+    self.drawAnnotations();
 
   })
+}
+
+dlxs.App.prototype._generateId = function() {
+  var date = new Date();
+  return md5([ date.getTime(), Math.random(date.getTime()) ].join("."));
+};
+
+dlxs.App.prototype._defaultRectOptions = function() {
+  return { clickable: true, color: randomColor({luminosity: 'bright',format:'hex'}),opacity: 0.75,weight:4,fillColor: '#eeeeee'};
+};
+
+dlxs.App.prototype._processText = function(index, content) {
+  var self = this;
+
+  var footnotesData = {};
+  var plain_content = linked_content = content;
+  var footnotes = content.match(/\{[^}]+\}/g);
+  $.each(footnotes, function(mii, footnote) {
+    var fid = self._generateId();
+    footnotesData[fid] = footnote.substr(1, footnote.length - 2);
+    linked_content = linked_content.replace(footnote, '<sup id="fnref:' + fid + '"><a href="#fn:' + fid + '" rel="footnote">' + self.dingbat + '</a></sup>');
+    plain_content = plain_content.replace(footnote, '');
+  })
+
+  self.annoData[index] = content;
+  self.linkedData[index] = linked_content;
+  self.plainData[index] = plain_content;
+
+  if ( ! $.isEmptyObject(footnotesData) ) {
+    self.footnotesData[index] = footnotesData;
+  }
+}
+
+dlxs.App.prototype.getSortedDrawnLayers = function() {
+  var self = this;
+
+  // sort the drawnItems by position; the "top" of the map is 0
+  // need to do a descending sort to be correct
+  var layers = self.drawnItems.getLayers();
+  layers.sort(function(a, b) {
+    var a_top = a.getBounds().getNorth();
+    var b_top = b.getBounds().getNorth();
+    return b_top - a_top;
+  })
+  return layers;
+};
+
+dlxs.App.prototype.drawAnnotations = function() {
+  var self = this;
+  self.$text.empty();
+
+  var layers = self.getSortedDrawnLayers();
+  if ( layers.length > 0 ) {
+    for(var i in layers) {
+      var layer = layers[i];
+      var path = layer._path;
+      var index = $(path).data('index');
+      var content = self.linkedData[index];
+      var $span = $("<span>" + content + "</span>").appendTo(self.$text);
+      // $span.appendTo($lines);
+      $span.attr("id", "text" + index);
+      $span.data('index', index);
+    }
+    self.drawFootnotes();
+  } else {
+    self.$text.html(self.original_translation.join("<br />"));
+  }
+};
+
+dlxs.App.prototype.drawFootnotes = function() {
+  var self = this;
+
+  if ( $(".footnotes").size() ) {
+    $(".footnotes").remove();
+  }
+
+  $('<h3 class="footnotes">Footnotes</h3>').appendTo(self.$inner);
+  var $footnotes = $('<div class="footnotes"><ol></ol></div>').appendTo(self.$metadata.find(".panels--inner"));
+  $footnotes = $footnotes.find('ol');
+
+  var layers = self.getSortedDrawnLayers();
+  if ( layers.length > 0 ) {
+    for(var i in layers) {
+      var layer = layers[i];
+      var path = layer._path;
+      var index = $(path).data('index');
+      var footnote_indexes = self.footnotesData[index];
+      if ( ! footnote_indexes ) { continue; }
+      // console.log("AHOY FOOTNOTE", footnote_indexes);
+      for(var fid in footnote_indexes) {
+        var content = self.footnotesData[index][fid];
+        var $li = $('<li class="footnote"><p><a href="#fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
+        $li.attr("id", "fn:" + fid);
+      }
+    }
+  }
+
+  $.bigfoot({ 
+    positionContent: true,
+    activateCallback: function() { self.in_footnote = true; },
+    actionOriginalFN: 'hide',
+    buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">{{FOOTNOTENUM}}</button></div>'
+    // buttonMarkup: '<div class="bigfoot-footnote__container"><button href="#" class="bigfoot-footnote__button" rel="footnote" id="{{SUP:data-footnote-backlink-ref}}" data-footnote-number="{{FOOTNOTENUM}}" data-footnote-identifier="{{FOOTNOTEID}}" alt="See Footnote {{FOOTNOTENUM}}" data-bigfoot-footnote="{{FOOTNOTECONTENT}}">' + self.dingbat + '</button></div>'
+  } );
 }
 
 dlxs.App.prototype.reflowText = function() {
@@ -404,6 +487,7 @@ dlxs.App.prototype.reflowText = function() {
   }
 
 }
+
 
 $().ready(function() {
 
@@ -442,11 +526,11 @@ $().ready(function() {
     $("html,body").animate({ scrollTop: 0 }, 'fast');
   })
 
-  $("body").on('click', '.action-page', function(e) {
-    e.preventDefault();
-    var target = $(this).data('target');
-    app.showPage(target);
-  })
+  // $("body").on('click', '.action-page', function(e) {
+  //   e.preventDefault();
+  //   var target = $(this).data('target');
+  //   app.showPage(target);
+  // })
 
   $("body").on('click', ".action-go-page", function(e) {
     e.preventDefault();

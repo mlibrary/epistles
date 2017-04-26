@@ -73,7 +73,6 @@ $app->post('/', function() use ($app) {
     $identifier = urldecode($app['request']->getQueryString());
     $action = $app['request']->request->get('action');
     if ( $identifier ) {
-        // return $app["admin.$action"];
         $method = $action . 'Action';
         return $app['admin.controller']->$method($app, $identifier);
     }

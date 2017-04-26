@@ -8,8 +8,12 @@
 $action-reveal-size: 4rem;
 $action-reveal-margin: 5.5rem;
 
-body {
+body.access.show {
   background: #000;
+
+  .site-header {
+    display: none;
+  }
 }
 
 .leaflet-top.leaflet-left {
