@@ -44,7 +44,7 @@ dlxs.App.prototype.initializeViewer = function(options) {
   self.drawnItems = new L.FeatureGroup();
   self.viewer.addLayer(self.drawnItems);
 
-  self.layer = L.tileLayer.iiif('https://quod.lib.umich.edu/cgi/i/image/api/image/' + self.identifier + '/info.json');
+  self.layer = L.tileLayer.iiif('https://quod.lib.umich.edu/cgi/i/image/api/image/' + self.identifier + '/info.json', { bestFit: true });
   self.layer.on('load', function(e) { 
     e.target.off('load'); 
     self.width = self.layer.x;
@@ -497,6 +497,7 @@ dlxs.App.prototype._addSaveControl = function() {
 
 dlxs.App.prototype._toggleDirty = function(state) {
   if ( state && this.dirty.indexOf(state) < 0 ) { this.dirty.push(state); }
+  else if ( state === false ) { this.dirty = []; }
   $("#action-save-annotation").toggleClass("dirty", state);
 };
 

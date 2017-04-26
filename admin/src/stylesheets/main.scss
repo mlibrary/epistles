@@ -41,6 +41,11 @@ pre {
   font-family: Consolas, monospace;
 }
 
+span.footnote-text {
+  font-weight: bold;
+  color: #999;
+}
+
 .offscreen {
   display: none; // FIXME
 }
@@ -178,6 +183,7 @@ $color_pulse: #7FFF00;
 
 .box__1_2 {
   flex-grow: 1;
+  max-width: 60vw;
 }
 
 .box__1_3 {
@@ -208,6 +214,10 @@ table.results {
   tbody {
     tr:nth-child(odd) {
       background-color: #fbfbfb;
+    }
+
+    tr:hover {
+      background-color: #eee;
     }
 
     tr {

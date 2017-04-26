@@ -6,6 +6,7 @@ $silexRoot = $_SERVER['DLXSROOT'] . '/web/i/image/api/';
 $app = require $silexRoot . 'bootstrap.php';
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 $loader->add('Twig_', $silexRoot . 'silex/vendor/twig/twig/lib');
@@ -19,6 +20,13 @@ $app->before(function (Request $request) {
     }
 });
 
+$app->before(function(Request $request) use ($app) {
+    $auth_check = $app['auth.check']('apis');
+    if ( ! $auth_check && $app['request']->getQueryString() != 'login' ) {
+        return new Response($app['admin.login'], 404);
+    }
+});
+
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
@@ -26,6 +34,20 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/views',
 ));
+
+$app['auth.user'] = $app->protect(function() {
+    return array_key_exists('REMOTE_USER', $_SERVER) ? $_SERVER['REMOTE_USER'] : '';
+});
+
+$app['auth.check'] = $app->protect(function($collid) use ($app) {
+    $users = array('rjmcinty', 'roger', 'monicats');
+    $remote_user = $app['auth.user']();
+    return in_array($remote_user, $users);
+});
+
+$app['admin.login'] = $app->share(function() use ($app) {
+    return $app['twig']->render('login.twig');
+});
 
 $app['admin.index'] = $app->share(function() use ($app) {
     // in the real world this should be made more efficient?
@@ -81,12 +103,17 @@ $app['admin.show'] = $app->share(function() use ($app) {
         $is_modified = true;
     }
 
+    $original_translation = json_decode(( $data['original_translation'] ? $data['original_translation'] : '[]' ), true);
+    foreach($original_translation as $index => $line) {
+        $original_translation[$index] = preg_replace('/(\{[^}]+\})/', '<span class="footnote-text">${1}</span>', $line);
+    }
+
     return $app['twig']->render('show.twig', array(
         'identifier' => $identifier,
         'published' => $published,
         'updated_at' => $data ? $data['updated_at'] : null,
         'annotations' => $data ? $data['annotations'] : '[]',
-        'original_translation' => json_decode(( $data['original_translation'] ? $data['original_translation'] : '[]' ), true),
+        'original_translation' => $original_translation,
         'asset' => $asset,
         'debug' => $debug,
     ));
@@ -110,17 +137,19 @@ $app['admin.update'] = $app->share(function() use ($app) {
         }
     }
 
+    $params[] = $app['auth.user']();
+
     // archive the current version
     $sql = <<<SQL
 INSERT INTO ImageClassAnnotationArchive 
-SELECT NULL, identifier, published, annotations, original_translation, updated_at, published_at 
+SELECT NULL, identifier, published, annotations, original_translation, remote_user, updated_at, published_at 
 FROM ImageClassAnnotation WHERE identifier = ? AND published = 0
 SQL;
     $app['db']->executeUpdate($sql, array($identifier));
 
     // $sql = "UPDATE ImageClassAnnotation SET updated_at = NOW(), " . implode(',', $expr) . " WHERE identifier = ? AND published = 0";
 
-    $sql = "REPLACE INTO ImageClassAnnotation ( identifier, published, annotations, updated_at ) VALUES ( ?, 0, ?, NOW() )";
+    $sql = "REPLACE INTO ImageClassAnnotation ( identifier, published, annotations, remote_user, updated_at ) VALUES ( ?, 0, ?, ?, NOW() )";
 
     $retval = $app['db']->executeUpdate($sql, $params);
 

@@ -30,7 +30,7 @@
                 <div class="panel">
                     <ul>
                         {% for line in original_translation %}
-                            <li><span>{{ line }}</span></li>
+                            <li><span>{{ line|raw }}</span></li>
                         {% endfor %}
                     </ul>
                 </div>

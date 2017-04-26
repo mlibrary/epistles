@@ -21,8 +21,8 @@ var javascripts = {};
 // javascripts.input = [ './vendor/leaflet/dist/**/*.js', './vendor/**/*.js', './src/javascripts/components/**/*.js', './src/javascripts/main.js' ];
 javascripts.input = [];
 javascripts.input.push('./vendor/leaflet/dist/leaflet-src.js');
-javascripts.input.push('./vendor/leaflet/dist/leaflet-iiif-um.js');
-javascripts.input.push('./vendor/leaflet/dist/tooltip.patches.js');
+javascripts.input.push('./vendor/leaflet/plugins/leaflet-iiif.js');
+javascripts.input.push('./vendor/leaflet/plugins/tooltip.patches.js');
 javascripts.input.push('./vendor/jBox/jBox.js', './vendor/jBox/plugins/Confirm/jBox.Confirm.js');
 javascripts.input.push('./vendor/bigfoot/dist/bigfoot.js');
 javascripts.input.push('./src/javascripts/components/**/*.js', './src/javascripts/main.js')
