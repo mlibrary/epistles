@@ -12,7 +12,9 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 $loader->add('Twig_', $silexRoot . 'silex/vendor/twig/twig/lib');
 $loader->add('Symfony\\Bridge\\Twig\\', $silexRoot . 'silex/vendor/symfony/twig-bridge');
 $loader->add('Symfony\\Component\\Console\\', $silexRoot . '/silex/vendor/symfony/console');
-# $loader->add('DLXS', __DIR__);
+// $loader->add('vendor', __DIR__);
+
+require 'vendor/Parsedown.php';
 
 // $app['admin.controller'] = $app->share(function() use ($app) {
 //     return new DLXS\Controller\AdminController();
@@ -31,8 +33,19 @@ $app['access.boot'] = function() use ($app) {
 
 $app['access.page'] = function($identifier) use ($app) {
     return function($identifier) use ($app) {
-        $contents = "<pre>A PAGE</pre>";
-        $title = ucwords($identifier);
+        # $contents = "<pre>A PAGE</pre>";
+        $processor = new Parsedown();
+        # $contents = file_get_contents(__DIR__ . '/' . $identifier . '.md');
+        $contents = file(__DIR__ . '/pages/' . $identifier . '.md');
+        $title = '# ' . ucwords($identifier);
+        if ( substr($contents[0], 0, 2) == '# ' ) {
+            $title = array_shift($contents);
+            # $title = substr($title, 2);
+        }
+        $contents = $processor->text(implode("\n", $contents));
+        $title = $processor->text($title);
+        $title = substr($title, 4, strlen($title) - 9);
+
         return $app['twig']->render('page.twig', array(
             'title' => $title,
             'contents' => $contents
