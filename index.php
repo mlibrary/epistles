@@ -33,15 +33,18 @@ $app['access.boot'] = function() use ($app) {
 
 $app['access.page'] = function($identifier) use ($app) {
     return function($identifier) use ($app) {
-        # $contents = "<pre>A PAGE</pre>";
-        $processor = new Parsedown();
-        # $contents = file_get_contents(__DIR__ . '/' . $identifier . '.md');
-        $contents = file(__DIR__ . '/pages/' . $identifier . '.md');
+        $input_filename = __DIR__ . '/pages/' . $identifier . '.md';
+        if ( ! file_exists($input_filename) ) {
+            $app->abort(404, "Page not found");
+        }
+
+        $contents = file($input_filename);
         $title = '# ' . ucwords($identifier);
         if ( substr($contents[0], 0, 2) == '# ' ) {
             $title = array_shift($contents);
             # $title = substr($title, 2);
         }
+        $processor = new Parsedown();
         $contents = $processor->text(implode("\n", $contents));
         $title = $processor->text($title);
         $title = substr($title, 4, strlen($title) - 9);
