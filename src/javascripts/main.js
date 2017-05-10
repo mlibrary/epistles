@@ -446,7 +446,8 @@ dlxs.App.prototype.drawAnnotations = function() {
   // var layers = self.getSortedDrawnLayers();
   var indexes = self.getSortedIndexes();
   var hasLayers = self.drawnItems.getLayers().length > 0;
-  for(var index in indexes) {
+  for(var i in indexes) {
+    var index = indexes[i];
     var content = self.linkedData[index];
     // var $span = $("<span>" + content + "</span>").appendTo(self.$text);
     var $span = $("<span></span>").appendTo(self.$text);
@@ -472,7 +473,8 @@ dlxs.App.prototype.drawFootnotes = function() {
   $footnotes = $footnotes.find('ol');
 
   var indexes = self.getSortedIndexes();
-  for(var index in indexes) {
+  for(var i in indexes) {
+    var index = indexes[i];
     var footnote_indexes = self.footnotesData[index];
     if ( ! footnote_indexes ) { continue; }
     for(var fid in footnote_indexes) {
