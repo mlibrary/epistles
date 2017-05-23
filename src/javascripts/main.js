@@ -14,7 +14,7 @@ dlxs.App = function(options) {
   this.$scan.height($(window).height() * 1.0);
 
   $("body").on("app:pagechange", function(e, args) {
-    console.log("AHOY PAGE CHANGE", args);
+    // console.log("AHOY PAGE CHANGE", args);
     self.updateDocumentTitle(args)
   })
 }
@@ -189,7 +189,7 @@ dlxs.App.prototype.initializeScanViewer = function() {
       } else if ( ! $text.isOnScreen() ) {
           // self.$text.scrollTop(self.$text.scrollTop() +  $text.position().top - 20);
           var delta = ( $text.position().top + $text.height() ) - $(window).height() + 20; //  - $(window).scrollTop();
-          console.log("SCROLLING:", delta, $text.position().top + $text.height(), $(window).height(), $(window).scrollTop());
+          // console.log("SCROLLING:", delta, $text.position().top + $text.height(), $(window).height(), $(window).scrollTop());
           $(window).scrollTop(delta);
       }
     } else {
@@ -222,8 +222,6 @@ dlxs.App.prototype.loadScanData = function(identifier) {
   this.resetViewer();
   if ( identifier === undefined ) { identifier = this.identifier; }
 
-  console.log("AHOY LOADING", identifier);
-
   var viewer = this.viewer;
   var info = this.info[identifier];
   var service_url = info['service']['@id'];
@@ -247,7 +245,6 @@ dlxs.App.prototype.loadScanData = function(identifier) {
       self.loadMask(identifier); 
       self.loadTranslationOverlay(identifier);
       self.loadMetadata(identifier);
-      console.log("AHOY TRIGGER", identifier, info['label']);
       $("body").trigger("app:pagechange", [ { page: identifier, title: info['label'] } ]);
     });
   }
@@ -478,7 +475,6 @@ dlxs.App.prototype.drawFootnotes = function() {
     var footnote_indexes = self.footnotesData[index];
     if ( ! footnote_indexes ) { continue; }
     for(var fid in footnote_indexes) {
-      console.log("AHOY FOOTNOTE", footnote_indexes, fid);
       var content = self.footnotesData[index][fid];
       var $li = $('<li class="footnote"><p><a href="#fnref:' + fid + '" title="return">↩</a> ' + content + '</p></li>').appendTo($footnotes);
       $li.attr("id", "fn:" + fid);
@@ -535,7 +531,7 @@ $().ready(function() {
   });
 
   $(window).on('popstate', function(e) {
-    console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    // console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
     app.showPage(event.state.page); //, event.state.target);
   })
 
@@ -581,7 +577,6 @@ $().ready(function() {
   }
 
   $.getJSON(get_data_href("epistles-of-paul-metadata.json", "assets"), function(data) {
-    console.log(data);
     app.initializeViewer(data);
   });
 
