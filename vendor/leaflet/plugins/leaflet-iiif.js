@@ -1,5 +1,5 @@
 /*
- * Leaflet-IIIF 1.1.1
+ * Leaflet-IIIF 1.2.1
  * IIIF Viewer for Leaflet
  * by Jack Reed, @mejackreed
  */
@@ -11,7 +11,9 @@ L.TileLayer.Iiif = L.TileLayer.extend({
     updateWhenIdle: true,
     tileFormat: 'jpg',
     fitBounds: true,
+    setMaxBounds: false,
     bestFit: false,
+    fractionalZoomPatch: true,
     marginTop: 0,
     marginRight: 0,
     marginBottom: 0,
@@ -33,6 +35,10 @@ L.TileLayer.Iiif = L.TileLayer.extend({
     // Check for an explicit quality
     if (options.quality) {
       this._explicitQuality = true;
+    }
+
+    if (options.bestFit) {
+      options.setMaxBounds = true;
     }
 
     if ( location.hash.indexOf('debug') > -1 ) {
@@ -84,6 +90,10 @@ L.TileLayer.Iiif = L.TileLayer.extend({
         _this._fitBounds();
       }
 
+      if(_this.options.setMaxBounds) {
+        _this._setMaxBounds();
+      }
+
       // Reset tile sizes to handle non 256x256 IIIF tiles
       _this.on('tileload', function(tile, url) {
 
@@ -91,13 +101,32 @@ L.TileLayer.Iiif = L.TileLayer.extend({
           width = tile.tile.naturalWidth;
 
         // No need to resize if tile is 256 x 256
-        if (height === 256 && width === 256) return;
+        if (height === 256 && width === 256 && ! _this.options.fractionalZoomPatch) return;
+        // ideally wouldn't need the patch for integer zoom, but fast scrolling loads tiles on integer zoom
+        // then has seams on the final fractional zoom
+        // && _this._map.getZoom() != Math.ceil(_this._map.getZoom())
+        if ( _this.options.fractionalZoomPatch ) {
+          height += 1;
+          width += 1;
+        }
 
         tile.tile.style.width = width + 'px';
         tile.tile.style.height = height + 'px';
 
       });
     });
+  },
+  onRemove: function(map) {
+    var _this = this;
+    
+    // Remove maxBounds set for this image
+    if(_this.options.setMaxBounds) {
+      map.setMaxBounds(null);
+    }
+
+    // Call remove TileLayer
+    L.TileLayer.prototype.onRemove.call(_this, map);
+
   },
   _fitBounds: function() {
     var _this = this;
@@ -117,14 +146,31 @@ L.TileLayer.Iiif = L.TileLayer.extend({
     var ne = _this._map.options.crs.pointToLatLng(L.point(imageSize.x + margins.left, 0), initialZoom);
     var bounds = L.latLngBounds(sw, ne);
 
+    var boundsOptions = {
+      paddingTopLeft: [ margins.left, margins.top ],
+      paddingBottomRight: [ margins.right, margins.bottom ]
+    };
+
     if ( this.options.bestFit ) {
+      this._map.options.zoomSnap = 0.0;
+      this._map.options.zoomDelta = 0.5;
       this._map.options.minZoom = initialZoom;
-      _this._map.fitBounds(bounds); // what does true do?
-      _this._map.setMaxBounds(bounds);
-      _this._map.setMaxZoom(_this.maxNativeZoom);
-    } else {
-      _this._map.fitBounds(bounds, true);
+      boundsOptions.maxZoom = _this.maxNativeZoom;
     }
+
+    _this._map.fitBounds(bounds, boundsOptions);
+  },
+  _setMaxBounds: function() {
+    var _this = this;
+
+    // Find best zoom level, center map, and constrain viewer
+    var initialZoom = _this._getInitialZoom(_this._map.getSize());
+    var imageSize = _this._getImageSize(initialZoom);
+    var sw = _this._map.options.crs.pointToLatLng(L.point(0, imageSize.y), initialZoom);
+    var ne = _this._map.options.crs.pointToLatLng(L.point(imageSize.x, 0), initialZoom);
+    var bounds = L.latLngBounds(sw, ne);
+
+    _this._map.setMaxBounds(bounds, true);
   },
   _getInfo: function() {
     var _this = this;
@@ -134,6 +180,8 @@ L.TileLayer.Iiif = L.TileLayer.extend({
       .done(function(data) {
         _this.y = data.height;
         _this.x = data.width;
+        _this._id = data['@id'];
+        _this._baseUrl = _this._templateUrl();
 
         var tierSizes = [],
           imageSizes = [],
@@ -225,7 +273,7 @@ L.TileLayer.Iiif = L.TileLayer.extend({
   },
 
   _infoToBaseUrl: function() {
-    return this._infoUrl.replace('info.json', '');
+    return this._id ? (this._id + '/') : this._infoUrl.replace('info.json', '');
   },
   _templateUrl: function() {
     return this._infoToBaseUrl() + '{region}/{size}/{rotation}/{quality}.{format}';
@@ -276,44 +324,23 @@ L.TileLayer.Iiif = L.TileLayer.extend({
   },
   _getInitialBestFitZoom: function(mapSize) {
     var _this = this,
-      tolerance = 0.8,
-      tuning_delta = 0.125,
       imageSize,
       key;
 
-    tolerance = 1.0;
+    imageSize = this._imageSizes[this.maxNativeZoom];
+    key = imageSize.x > imageSize.y ? 'x' : 'y';
 
-    key = this._imageSizes[0].x > this._imageSizes[0].y ? 'x' : 'y';
-    var other_key = key == 'x' ? 'y' : 'x';
+    var fraction = imageSize[key] / mapSize[key];
+    var exp = Math.log2(fraction);
+    if ( exp >= 0 ) {
+      var zoom = this.maxNativeZoom - exp,
+          original_zoom = zoom;
 
-    for (var i = _this.maxNativeZoom; i >= 0; i--) {
-      imageSize = this._imageSizes[i];
-      if (imageSize[key] * tolerance < mapSize[key] ) {
-        var d = imageSize[key];
-        var e = imageSize[other_key];
-        var j = 0;
-
-        // checking e would be the BEST FIT WITHIN THE RECTANGLE
-        // without e it's just BEST FIT on the longest dimension
-
-        var fit_height = function() {
-          return d * ( 1.0 + j ) < mapSize[key];
-        }
-
-        var fit_rect = function() {
-          return d * ( 1.0 + j ) < mapSize[key] && e * ( 1.0 + j ) < mapSize[other_key];
-        }
-
-        var fn = fit_rect;
-
-        while ( fn() ) {          
-          j += tuning_delta;
-        }
-        return i + j;
-      }
+      // round the zoom for simpler processing
+      zoom = Math.round(zoom * 100) / 100;
+      return zoom;
     }
-    // return a default zoom
-    return 2;
+    return this.maxNativeZoom;
   },
   _getInitialZoom: function (mapSize) {
     var _this = this,

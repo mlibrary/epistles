@@ -164,8 +164,8 @@ dlxs.App.prototype.initializeScanViewer = function() {
 
   self.$text.on("mouseenter mouseleave", "span[id]", function(e) {
     var $this = $(this);
-    var base_id = $this.data('base_id');
-    var $region = $("#region" + base_id);
+    var index = $this.data('index');
+    var $region = $("#region" + index);
     if ( e.type == 'mouseenter' || e.type == 'focusin' ) {
       $region.addClass('focused');
     } else {
@@ -183,7 +183,7 @@ dlxs.App.prototype.initializeScanViewer = function() {
       var content = self.plainData[index];
       $text.addClass("focused");
 
-      if ( true || self.$info == self.$text ) {
+      if ( false || self.$info == self.$text ) {
         self.$annotation.removeClass('invisible');
         self.$annotation.find(".translation-text").html('<span class="line-number">LINE: ' + line + '</span>' + content);
       } else if ( ! $text.isOnScreen() ) {
