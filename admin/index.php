@@ -49,6 +49,8 @@ $app['auth.user'] = function() {
 $app['auth.check'] = function($collid) use ($app) {
     return function() use ($app) {
         $users = array('rjmcinty', 'roger', 'monicats');
+        $users[] = 'neenapio';
+        $users[] = 'ktopham';
         $remote_user = $app['auth.user']();
         return in_array($remote_user, $users);
     };
