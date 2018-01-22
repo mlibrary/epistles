@@ -384,6 +384,8 @@ dlxs.App.prototype._defaultRectOptions = function() {
 dlxs.App.prototype._processText = function(index, content) {
   var self = this;
 
+  if ( ! content ) { return ; }
+
   content = content.replace(/</g, '&lt;');
 
   var footnotesData = {};
